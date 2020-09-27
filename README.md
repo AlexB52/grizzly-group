@@ -22,7 +22,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+```ruby
+User = Struct.new(:age)
+
+users = (0..10).to_a.map { |i| User.new(i) }
+
+class UserGroup < Grizzly::Group
+  def average_age
+    sum(&:age) / size.to_f
+  end
+end
+
+UserGroup.new(users).
+  select { |user| user.age.even? }.
+  reject { |user| user.age < 3 }.
+  average_age
+# => 7.0
+
+users.
+  select { |user| user.age.even? }.
+  reject { |user| user.age < 3 }.
+  average_age
+# NoMethodError (undefined method `average_age' for #<Array:0x00007f955e8cb248>)
+```
+
 
 ## Development
 
