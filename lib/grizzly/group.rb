@@ -29,9 +29,8 @@ class Grizzly::Group < Array
     result = super
     return result unless result.is_a?(Hash)
 
-    result.reduce({}) do |result, (k, v)|
-      result[k] = new_collection(v)
-      result
+    result.each do |key, value|
+      result[key] = new_collection(value)
     end
   end
 
