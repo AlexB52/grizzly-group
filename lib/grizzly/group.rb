@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module Groupable
   def zip(*args)
     result = super
@@ -147,3 +149,60 @@ class Grizzly::Group < Array
     subgroup(super)
   end
 end
+
+
+class Grizzly::Enumerator < Enumerator
+  extend Forwardable
+
+  METHODS = %i{+ each feed inspect next next_values peek peek_values rewind size with_index with_object}
+  # each_with_index each_with_object
+  ENUMERABLE_METHODS = %i{all? any? chain chunk chunk_while collect collect_concat count cycle detect drop drop_while each_cons each_entry each_slice each_with_index each_with_object entries filter filter_map find find_all find_index first flat_map grep grep_v group_by include? inject lazy map max max_by member? min min_by minmax minmax_by none? one? partition reduce reject reverse_each select slice_after slice_before slice_when sort sort_by sum take take_while tally to_a to_h uniq zip}
+  #filter_map tally
+  alias :old_enum :to_enum
+
+  def_delegators :@enum, *METHODS
+
+  ENUMERABLE_METHODS.each do |method_name|
+    define_method(method_name) do |*args, &block|
+      return to_enum(__method__, *args) unless block
+
+      @object.send(__method__, *args, &block)
+    end
+  end
+
+  attr_reader :object
+  def initialize(object, method_name, *args)
+    @object = object
+    @enum = object.to_enum(method_name, *args)
+  end
+
+  def to_enum(method_name, *args)
+    self.class.new @object, method_name, *args
+  end
+end
+
+# class Grizzly::Enumerator < Enumerator
+#   extend Forwardable
+
+#   METHODS = %i{+ each each_with_index each_with_object feed inspect next next_values peek peek_values rewind size with_index with_object}
+
+#   #filter_map tally
+#   alias :old_enum :to_enum
+
+#   def_delegators :@enum, *METHODS
+
+#   def select(*args)
+#     return to_enum(__method__, *args) unless block_given?
+#     super
+#   end
+
+#   def initialize(object, method_name, *args)
+#     @object = object
+#     @enum = object.to_enum(method_name, *args)
+#   end
+
+#   def to_enum(method_name, *args)
+#     self.class.new @object, method_name, *args
+#   end
+# end
+
