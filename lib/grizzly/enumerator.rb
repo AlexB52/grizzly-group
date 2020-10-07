@@ -4,18 +4,11 @@ module Grizzly
   class Enumerator
     extend Forwardable
 
-    DELEGATOR_METHODS = %i{
-      to_a
-      first
-      next
-      next_values
-      peek
-      peek_values
-      feed
-      +
+    def_delegators :@enum, *%i{
+      + first feed to_a
+      next next_values
+      peek peek_values
     }
-
-    def_delegators :@enum, *DELEGATOR_METHODS
 
     attr_reader :enum
     def initialize(enum, size = nil)
@@ -24,14 +17,23 @@ module Grizzly
     end
 
     def each(*args, &block)
-      return self unless args.any? || block_given?
-      return self.class.new enum.send(__method__, *args) if args.any? && !block_given?
+      unless block_given?
+        return args.any? ? new_enumerator(enum, __method__, *args) : self
+      end
 
       enum.each(*args, &block)
     end
 
+    def with_index(*args, &block)
+      unless block_given?
+        return new_enumerator(self, __method__, *args)
+      end
+
+      enum.with_index(*args, &block)
+    end
+
     def inspect
-      enum.inspect.gsub('Enumerator', 'Grizzly::Enumerator')
+      enum.inspect.gsub('Enumerator', self.class.to_s)
     end
 
     def size
@@ -42,10 +44,10 @@ module Grizzly
       enum.rewind && self
     end
 
-    def with_index(offset = 0, &block)
-      return self.class.new(to_enum(:with_index, offset), size) unless block_given?
+    private
 
-      enum.with_index(offset, &block)
+    def new_enumerator(obj, method_name, *args)
+      self.class.new obj.to_enum(method_name, *args), size
     end
   end
 
