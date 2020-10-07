@@ -39,6 +39,7 @@ module Grizzly
 
       enum.with_object(object, &block)
     end
+    alias :each_with_object :with_object
 
     def inspect
       enum.inspect.gsub('Enumerator', self.class.to_s)
