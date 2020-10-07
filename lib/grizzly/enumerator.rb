@@ -4,7 +4,17 @@ module Grizzly
   class Enumerator
     extend Forwardable
 
-    def_delegators :@enum, :to_a, :size, :first, :next, :rewind, :next_values
+    DELEGATOR_METHODS = %i{
+      to_a
+      size
+      first
+      next
+      rewind
+      next_values
+      peek
+    }
+
+    def_delegators :@enum, *DELEGATOR_METHODS
 
     attr_reader :enum
     def initialize(enum)
