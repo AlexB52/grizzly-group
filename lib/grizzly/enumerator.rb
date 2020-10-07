@@ -13,6 +13,7 @@ module Grizzly
       peek
       peek_values
       feed
+      +
     }
 
     def_delegators :@enum, *DELEGATOR_METHODS
