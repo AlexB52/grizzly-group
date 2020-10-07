@@ -17,6 +17,10 @@ module Grizzly
 
       enum.each(*args, &block)
     end
+
+    def inspect
+      enum.inspect.gsub('Enumerator', 'Grizzly::Enumerator')
+    end
   end
 
   # class Enumerator < Enumerator
