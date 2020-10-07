@@ -1,10 +1,19 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "grizzly/group"
-
+require "grizzly"
+require 'byebug'
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
+
+class MyGroup < Grizzly::Group;end
+
+def setup
+  a = MyGroup.new (0..10).to_a
+  e = Grizzly::Enumerator.new(a.select)
+
+  [a, e]
+end
 
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
