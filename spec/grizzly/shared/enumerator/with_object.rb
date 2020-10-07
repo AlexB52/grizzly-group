@@ -2,7 +2,8 @@ require_relative '../../../spec_helper'
 
 describe :enum_with_object, shared: true do
   before :each do
-    @enum = [:a, :b].to_enum
+    @subject = Grizzly::Enumerator
+    @enum = @subject.new [:a, :b].to_enum
     @memo = ''
     @block_params = @enum.send(@method, @memo).to_a
   end
@@ -35,7 +36,7 @@ describe :enum_with_object, shared: true do
   context "without block" do
     it "returns new Enumerator" do
       ret = @enum.send(@method, @memo)
-      ret.should be_an_instance_of(Enumerator)
+      ret.should be_an_instance_of(@subject)
       ret.should_not equal(@enum)
     end
   end

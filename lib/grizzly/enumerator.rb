@@ -24,12 +24,20 @@ module Grizzly
       enum.each(*args, &block)
     end
 
-    def with_index(*args, &block)
+    def with_index(offset = 0, &block)
       unless block_given?
-        return new_enumerator(self, __method__, *args)
+        return new_enumerator(self, __method__, offset)
       end
 
-      enum.with_index(*args, &block)
+      enum.with_index(offset, &block)
+    end
+
+    def with_object(object, &block)
+      unless block_given?
+        return new_enumerator(self, __method__, object)
+      end
+
+      enum.with_object(object, &block)
     end
 
     def inspect
