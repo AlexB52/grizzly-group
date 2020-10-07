@@ -9,9 +9,10 @@ module Grizzly
       size
       first
       next
-      rewind
       next_values
+      rewind
       peek
+      peek_values
       feed
     }
 
