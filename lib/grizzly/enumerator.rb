@@ -10,7 +10,6 @@ module Grizzly
       first
       next
       next_values
-      rewind
       peek
       peek_values
       feed
@@ -32,6 +31,10 @@ module Grizzly
 
     def inspect
       enum.inspect.gsub('Enumerator', 'Grizzly::Enumerator')
+    end
+
+    def rewind
+      enum.rewind && self
     end
   end
 
