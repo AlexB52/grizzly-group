@@ -10,7 +10,7 @@ class MyGroup < Grizzly::Group;end
 
 def setup
   a = MyGroup.new (0..10).to_a
-  e = Grizzly::Enumerator.new(a)
+  e = Grizzly::Enumerator.new(a.select)
 
   [a, e]
 end

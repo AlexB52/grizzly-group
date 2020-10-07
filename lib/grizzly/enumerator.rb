@@ -6,7 +6,6 @@ module Grizzly
 
     DELEGATOR_METHODS = %i{
       to_a
-      size
       first
       next
       next_values
@@ -19,8 +18,9 @@ module Grizzly
     def_delegators :@enum, *DELEGATOR_METHODS
 
     attr_reader :enum
-    def initialize(enum)
+    def initialize(enum, size = nil)
       @enum = enum
+      @size = size
     end
 
     def each(*args, &block)
@@ -34,8 +34,18 @@ module Grizzly
       enum.inspect.gsub('Enumerator', 'Grizzly::Enumerator')
     end
 
+    def size
+      @size || enum.size
+    end
+
     def rewind
       enum.rewind && self
+    end
+
+    def with_index(offset = 0, &block)
+      return self.class.new(to_enum(:with_index, offset), size) unless block_given?
+
+      enum.with_index(offset, &block)
     end
   end
 
