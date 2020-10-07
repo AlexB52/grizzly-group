@@ -32,6 +32,10 @@ module Grizzly
       enum.with_index(offset, &block)
     end
 
+    def each_with_index(&block)
+      with_index(&block)
+    end
+
     def with_object(object, &block)
       unless block_given?
         return new_enumerator(self, __method__, object)
