@@ -2,14 +2,15 @@
 
 require_relative '../../../spec_helper'
 
-describe "Enumerator#initialize" do
+describe :grizzly_enumerator_initialize, shared: true do
   before :each do
-    @uninitialized = Enumerator.allocate
+    @uninitialized = @subject.allocate
   end
 
-  it "is a private method" do
-    Enumerator.should have_private_instance_method(:initialize, false)
-  end
+  # new interface
+  # it "is a private method" do
+  #   @subject.should have_private_instance_method(:initialize, false)
+  # end
 
   it "returns self when given an object" do
     @uninitialized.send(:initialize, Object.new).should equal(@uninitialized)
@@ -25,7 +26,7 @@ describe "Enumerator#initialize" do
       r = yielder.yield 3
       yielder << r << 2 << 1
     end
-    @uninitialized.should be_an_instance_of(Enumerator)
+    @uninitialized.should be_an_instance_of(@subject)
     r = []
     @uninitialized.each{|x| r << x; x * 2}
     r.should == [3, 6, 2, 1]
@@ -59,3 +60,24 @@ describe "Enumerator#initialize" do
     end
   end
 end
+
+describe "Enumerator#initialize" do
+  before { @subject = Enumerator }
+
+  it_behaves_like :grizzly_enumerator_initialize, :initialize
+
+  it "is a private method" do
+    @subject.should have_private_instance_method(:initialize, false)
+  end
+end
+
+describe "Grizzly::Enumerator#initialize" do
+  before { @subject = Grizzly::Enumerator }
+
+  it_behaves_like :grizzly_enumerator_initialize, :initialize
+
+  it "is a private method" do
+    @subject.should have_private_instance_method(:initialize, true)
+  end
+end
+

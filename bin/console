@@ -10,11 +10,10 @@ class MyGroup < Grizzly::Group;end
 
 def setup
   a = MyGroup.new (0..10).to_a
-  e = a.select
+  e = Grizzly::Enumerator.new(a)
 
   [a, e]
 end
-
 
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
