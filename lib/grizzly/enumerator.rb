@@ -12,6 +12,7 @@ module Grizzly
       rewind
       next_values
       peek
+      feed
     }
 
     def_delegators :@enum, *DELEGATOR_METHODS
