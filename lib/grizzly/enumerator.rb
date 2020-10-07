@@ -1,7 +1,22 @@
 require 'forwardable'
 
 module Grizzly
-  class Enumerator < Enumerator
+  class Enumerator
+    extend Forwardable
+
+    def_delegators :@enum, :to_a
+
+    attr_reader :enum
+    def initialize(enum)
+      @enum = enum
+    end
+
+    def each(*args, &block)
+      return self unless args.any? || block_given?
+      return self.class.new enum.send(__method__, *args) if args.any? && !block_given?
+
+      enum.each(*args, &block)
+    end
   end
 
   # class Enumerator < Enumerator
