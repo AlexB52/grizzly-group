@@ -50,7 +50,7 @@ describe "Grizzly::Enumerator#each" do
   end
 
   it "raises a NoMethodError if the object doesn't respond to #each" do
-    enum = @subject.new Object.new.to_enum
+    enum = @subject.new(Object.new.to_enum)
     -> do
       enum.each { |e| e }
     end.should raise_error(NoMethodError)
