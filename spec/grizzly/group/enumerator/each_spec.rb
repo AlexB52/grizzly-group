@@ -10,9 +10,9 @@ describe "Grizzly::Enumerator#each" do
 
     @subject = Grizzly::Enumerator
 
-    @enum_with_arguments = @subject.new(object_each_with_arguments, :each_with_arguments, :arg0, :arg1, :arg2)
+    @enum_with_arguments = @subject.new(object_each_with_arguments.to_enum(:each_with_arguments, :arg0, :arg1, :arg2))
 
-    @enum_with_yielder = @subject.new(enum: Enumerator.new {|y| y.yield :ok})
+    @enum_with_yielder = @subject.new(Enumerator.new {|y| y.yield :ok})
   end
 
   it "yields each element of self to the given block" do
@@ -50,7 +50,7 @@ describe "Grizzly::Enumerator#each" do
   end
 
   it "raises a NoMethodError if the object doesn't respond to #each" do
-    enum = @subject.new(Object.new)
+    enum = @subject.new(Object.new.to_enum)
     -> do
       enum.each { |e| e }
     end.should raise_error(NoMethodError)

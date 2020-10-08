@@ -53,7 +53,7 @@ module Grizzly
     end
 
     def size
-      @size || enum.size
+      @size || enum.size || obj&.size
     end
 
     def rewind
