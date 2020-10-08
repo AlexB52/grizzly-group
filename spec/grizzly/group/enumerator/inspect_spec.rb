@@ -9,11 +9,11 @@ describe "Grizzly::Enumerator#inspect" do
     end
 
     it "including receiver and method and arguments" do
-      @subject.new((1..3), :each_slice, nil, 2).inspect.should == "#<Grizzly::Enumerator: 1..3:each_slice(2)>"
+      @subject.new((1..3), :each_slice, 2).inspect.should == "#<Grizzly::Enumerator: 1..3:each_slice(2)>"
     end
 
     it "including the nested Enumerator" do
-      @subject.new((1..3).each, :each_slice, nil, 2).inspect.should == "#<Grizzly::Enumerator: #<Grizzly::Enumerator: 1..3:each>:each_slice(2)>"
+      @subject.new((1..3).each, :each_slice, 2).inspect.should == "#<Grizzly::Enumerator: #<Grizzly::Enumerator: 1..3:each>:each_slice(2)>"
     end
   end
 end

@@ -10,7 +10,7 @@ describe "Grizzly::Enumerator#each" do
 
     @subject = Grizzly::Enumerator
 
-    @enum_with_arguments = @subject.new(object_each_with_arguments, :each_with_arguments, nil, :arg0, :arg1, :arg2)
+    @enum_with_arguments = @subject.new(object_each_with_arguments, :each_with_arguments, :arg0, :arg1, :arg2)
 
     @enum_with_yielder = @subject.new(enum: Enumerator.new {|y| y.yield :ok})
   end

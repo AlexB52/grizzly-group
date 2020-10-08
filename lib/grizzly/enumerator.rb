@@ -11,7 +11,7 @@ module Grizzly
     }
 
     attr_reader :enum, :obj, :method_name, :args
-    def initialize(obj, method_name = :each, size = nil, *args)
+    def initialize(obj, method_name = :each, *args, size: nil)
       @obj = obj
       @args = args
       @size = size
@@ -63,7 +63,7 @@ module Grizzly
     private
 
     def new_enumerator(obj, method_name, *args)
-      self.class.new obj, method_name, size, *args
+      self.class.new obj, method_name, *args, size: size
     end
   end
 
