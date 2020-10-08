@@ -10,10 +10,13 @@ module Grizzly
       peek peek_values
     }
 
-    attr_reader :enum
-    def initialize(enum, size = nil)
-      @enum = enum
+    attr_reader :enum, :obj, :method_name, :args
+    def initialize(obj, method_name = :each, size = nil, *args)
+      @obj = obj
+      @args = args
       @size = size
+      @method_name = method_name
+      @enum = obj.to_enum(method_name, *args)
     end
 
     def each(*args, &block)
@@ -60,7 +63,7 @@ module Grizzly
     private
 
     def new_enumerator(obj, method_name, *args)
-      self.class.new obj.to_enum(method_name, *args), size
+      self.class.new obj, method_name, size, *args
     end
   end
 
