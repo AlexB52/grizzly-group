@@ -59,11 +59,11 @@ module Grizzly
     end
 
     def pop(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def shift(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
   end
 end

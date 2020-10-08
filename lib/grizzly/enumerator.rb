@@ -10,6 +10,12 @@ module Grizzly
       peek peek_values
     }
 
+    Enumerable.public_instance_methods.each do |method_name|
+      define_method(method_name) do |*args, &block|
+        @obj.send(__method__, *args, &block)
+      end
+    end
+
     attr_reader :enum, :obj, :method_name, :args
     def initialize(obj, method_name = :each, *args, size: nil)
       @obj = obj

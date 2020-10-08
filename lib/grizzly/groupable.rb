@@ -24,7 +24,7 @@ module Grizzly
     end
 
     def minmax_by(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def minmax(*args)
@@ -32,11 +32,11 @@ module Grizzly
     end
 
     def sort_by(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def find_all(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def sort(*args)
@@ -44,33 +44,39 @@ module Grizzly
     end
 
     def reject(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def filter(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def select(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def first(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def last(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     private
 
-    def subgroup(result)
+    def subgroup(result, method_name: nil)
+      return new_enumerator(method_name) if result.is_a?(::Enumerator || Grizzly::Enumerator)
       return result unless result.is_a?(Array)
       return result if is_self?(result)
 
       new_collection(result)
     end
+
+    def new_enumerator(method_name, *args)
+      Grizzly::Enumerator.new(self, method_name, *args)
+    end
+
 
     def new_collection(array)
       self.class.new(array)
