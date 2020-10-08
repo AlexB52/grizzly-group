@@ -4,17 +4,17 @@ module Grizzly
   class Enumerator
     extend Forwardable
 
-    def_delegators :@enum, *%i{
-      + first feed to_a
-      next next_values
-      peek peek_values
-    }
-
     Enumerable.public_instance_methods.each do |method_name|
       define_method(method_name) do |*args, &block|
         @obj.send(__method__, *args, &block)
       end
     end
+
+    def_delegators :@enum, *%i{
+      + first feed to_a
+      next next_values
+      peek peek_values
+    }
 
     attr_reader :enum, :obj, :method_name, :args
     def initialize(obj, method_name = :each, *args, size: nil)

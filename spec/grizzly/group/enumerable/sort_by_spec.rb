@@ -16,11 +16,11 @@ describe :collection_sort_by, shared: true do
     ar.should == [b, a]
   end
 
-  it "returns an Enumerator when a block is not supplied" do
-    a = @subject.new(EnumerableSpecs::Numerous.new("a","b"))
-    a.sort_by.should be_an_instance_of(Enumerator)
-    a.to_a.should == ["a", "b"]
-  end
+  # it "returns an Enumerator when a block is not supplied" do
+  #   a = @subject.new(EnumerableSpecs::Numerous.new("a","b"))
+  #   a.sort_by.should be_an_instance_of(Enumerator)
+  #   a.to_a.should == ["a", "b"]
+  # end
 
   # it "gathers whole arrays as elements when each yields multiple" do
   #   multi = EnumerableSpecs::YieldsMulti.new
@@ -51,6 +51,12 @@ describe "Array#sort_by" do
     class MyArray < Array;end
     MyArray.new([1,2,3,4]).sort_by { |i| i }.should be_an_instance_of(Array)
   end
+
+  it "returns an Enumerator when a block is not supplied" do
+    a = @subject.new(EnumerableSpecs::Numerous.new("a","b"))
+    a.sort_by.should be_an_instance_of(Enumerator)
+    a.to_a.should == ["a", "b"]
+  end
 end
 
 describe "Collection#sort_by" do
@@ -60,5 +66,11 @@ describe "Collection#sort_by" do
 
   it "returns subclass instance on Array subclasses" do
     Group.new([1,2,3,4]).sort_by { |i| i }.should be_an_instance_of(Group)
+  end
+
+  it "returns an Enumerator when a block is not supplied" do
+    a = @subject.new(EnumerableSpecs::Numerous.new("a","b"))
+    a.sort_by.should be_an_instance_of(Grizzly::Enumerator)
+    a.to_a.should == ["a", "b"]
   end
 end
