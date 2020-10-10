@@ -2,6 +2,12 @@ module Grizzly
   class Group < Array
     include Groupable
 
+    def delete_if
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
     def transpose(*args)
       new_collection(super)
     end
