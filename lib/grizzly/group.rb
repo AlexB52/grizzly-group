@@ -2,6 +2,12 @@ module Grizzly
   class Group < Array
     include Groupable
 
+    def reverse_each
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
     def each_index
       result = super
       return new_enumerator(__method__) if result.is_a?(::Enumerator)
