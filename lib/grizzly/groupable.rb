@@ -1,5 +1,18 @@
 module Grizzly
   module Groupable
+
+    def reverse_each
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
+    def each_index
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
     def zip(*args)
       result = super
       return result unless result.is_a?(Array)
@@ -45,6 +58,12 @@ module Grizzly
 
     def reject(*args)
       subgroup(super, method_name: __method__)
+    end
+
+    def reject!(*args)
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
     end
 
     def filter(*args)

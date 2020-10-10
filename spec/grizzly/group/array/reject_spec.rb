@@ -101,9 +101,10 @@ describe :collection_reject!, shared: true do
     a.reject! { true }.should == nil
   end
 
-  it "returns an Enumerator if no block given, and the array is frozen" do
-    CollectionSpecs.frozen_array(@subject).reject!.should be_an_instance_of(Enumerator)
-  end
+  # NEW INTERFACE
+  # it "returns an Enumerator if no block given, and the array is frozen" do
+  #   CollectionSpecs.frozen_array(@subject).reject!.should be_an_instance_of(Enumerator)
+  # end
 
   it "raises a FrozenError on a frozen array" do
     -> { CollectionSpecs.frozen_array(@subject).reject! {} }.should raise_error(FrozenError)
@@ -177,6 +178,10 @@ describe "Array#reject!" do
   it "returns subclass instance on Array subclasses" do
     CollectionSpecs::MyArray[1, 2, 3].reject! { |x| x % 2 == 0 }.should be_an_instance_of(CollectionSpecs::MyArray)
   end
+
+  it "returns an Enumerator if no block given, and the array is frozen" do
+    CollectionSpecs.frozen_array(@subject).reject!.should be_an_instance_of(Enumerator)
+  end
 end
 
 describe "Collection#reject!" do
@@ -187,5 +192,9 @@ describe "Collection#reject!" do
 
   it "returns subclass instance on Array subclasses" do
     Group.new([1, 2, 3]).reject! { |x| x % 2 == 0 }.should be_an_instance_of(Group)
+  end
+
+  it "returns an Enumerator if no block given, and the array is frozen" do
+    CollectionSpecs.frozen_array(@subject).reject!.should be_an_instance_of(Grizzly::Enumerator)
   end
 end
