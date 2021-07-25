@@ -1,6 +1,5 @@
 module Grizzly
   module Groupable
-
     def reverse_each
       result = super
       return new_enumerator(__method__) if result.is_a?(::Enumerator)
