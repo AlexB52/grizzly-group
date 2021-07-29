@@ -1,5 +1,16 @@
 module Grizzly
   module Groupable
+    class MethodNotImplemented < StandardError
+    end
+
+    def grep(*args)
+      raise MethodNotImplemented, "This method is not available. Please see https://bugs.ruby-lang.org/issues/11808 for more information about why we can't override this method"
+    end
+
+    def grep_v(*args)
+      raise MethodNotImplemented, "This method is not available. Please see https://bugs.ruby-lang.org/issues/11808 for more information about why we can't override this method"
+    end
+
     def reverse_each
       result = super
       return new_enumerator(__method__) if result.is_a?(::Enumerator)
