@@ -1,5 +1,28 @@
 module Grizzly
   module Groupable
+    class MethodNotImplemented < StandardError
+    end
+
+    def grep(*args)
+      raise MethodNotImplemented, "This method is not available. Please see https://bugs.ruby-lang.org/issues/11808 for more information about why we can't override this method"
+    end
+
+    def grep_v(*args)
+      raise MethodNotImplemented, "This method is not available. Please see https://bugs.ruby-lang.org/issues/11808 for more information about why we can't override this method"
+    end
+
+    def reverse_each
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
+    def each_index
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
     def zip(*args)
       result = super
       return result unless result.is_a?(Array)
@@ -24,7 +47,7 @@ module Grizzly
     end
 
     def minmax_by(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def minmax(*args)
@@ -32,11 +55,11 @@ module Grizzly
     end
 
     def sort_by(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def find_all(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def sort(*args)
@@ -44,33 +67,45 @@ module Grizzly
     end
 
     def reject(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
+    end
+
+    def reject!(*args)
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
     end
 
     def filter(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def select(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def first(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def last(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     private
 
-    def subgroup(result)
+    def subgroup(result, method_name: nil)
+      return new_enumerator(method_name) if result.is_a?(::Enumerator || Grizzly::Enumerator)
       return result unless result.is_a?(Array)
       return result if is_self?(result)
 
       new_collection(result)
     end
+
+    def new_enumerator(method_name, *args)
+      Grizzly::Enumerator.new(self, method_name, *args)
+    end
+
 
     def new_collection(array)
       self.class.new(array)

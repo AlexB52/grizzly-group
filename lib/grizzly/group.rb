@@ -2,6 +2,18 @@ module Grizzly
   class Group < Array
     include Groupable
 
+    def each
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
+    def delete_if
+      result = super
+      return new_enumerator(__method__) if result.is_a?(::Enumerator)
+      result
+    end
+
     def transpose(*args)
       new_collection(super)
     end
@@ -59,11 +71,11 @@ module Grizzly
     end
 
     def pop(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
 
     def shift(*args)
-      subgroup(super)
+      subgroup(super, method_name: __method__)
     end
   end
 end

@@ -28,17 +28,18 @@ describe :collection_delete_if, shared: true do
     array.delete_if { |x| true }.should equal(array)
   end
 
-  it "returns an Enumerator if no block given, and the enumerator can modify the original array" do
-    enum = @a.delete_if
-    enum.should be_an_instance_of(Enumerator)
-    @a.should_not be_empty
-    enum.each { true }
-    @a.should be_empty
-  end
+  # NEW INTERFACE
+  # it "returns an Enumerator if no block given, and the enumerator can modify the original array" do
+  #   enum = @a.delete_if
+  #   enum.should be_an_instance_of(Enumerator)
+  #   @a.should_not be_empty
+  #   enum.each { true }
+  #   @a.should be_empty
+  # end
 
-  it "returns an Enumerator if no block given, and the array is frozen" do
-    @a.freeze.delete_if.should be_an_instance_of(Enumerator)
-  end
+  # it "returns an Enumerator if no block given, and the array is frozen" do
+  #   @a.freeze.delete_if.should be_an_instance_of(Enumerator)
+  # end
 
   it "raises a FrozenError on a frozen array" do
     -> { CollectionSpecs.frozen_array(@subject).delete_if {} }.should raise_error(FrozenError)
@@ -76,6 +77,18 @@ describe "Array#delete_if" do
     a.delete_if { |x| x < 3 }
     a.should be_an_instance_of(@subject)
   end
+
+  it "returns an Enumerator if no block given, and the enumerator can modify the original array" do
+    enum = @a.delete_if
+    enum.should be_an_instance_of(Enumerator)
+    @a.should_not be_empty
+    enum.each { true }
+    @a.should be_empty
+  end
+
+  it "returns an Enumerator if no block given, and the array is frozen" do
+    @a.freeze.delete_if.should be_an_instance_of(Enumerator)
+  end
 end
 
 describe "Collection#delete_if" do
@@ -88,5 +101,17 @@ describe "Collection#delete_if" do
     a = @subject.new([1,2,3,4,5])
     a.delete_if { |x| x < 3 }
     a.should be_an_instance_of(@subject)
+  end
+
+  it "returns an Enumerator if no block given, and the enumerator can modify the original array" do
+    enum = @a.delete_if
+    enum.should be_an_instance_of(Grizzly::Enumerator)
+    @a.should_not be_empty
+    enum.each { true }
+    @a.should be_empty
+  end
+
+  it "returns an Enumerator if no block given, and the array is frozen" do
+    @a.freeze.delete_if.should be_an_instance_of(Grizzly::Enumerator)
   end
 end
