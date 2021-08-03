@@ -16,6 +16,15 @@ module Grizzly
       peek peek_values
     }
 
+    def sort
+      case method_name
+      when :permutation
+        result = []
+        @obj.send(method_name, *args) { |permutation| result << @obj.class.new(permutation) }
+        result.sort
+      end
+    end
+
     attr_reader :enum, :obj, :method_name, :args
     def initialize(obj, method_name = :each, *args, size: nil)
       @obj = obj

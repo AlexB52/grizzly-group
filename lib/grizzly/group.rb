@@ -2,6 +2,21 @@ module Grizzly
   class Group < Array
     include Groupable
 
+    alias old_permutation permutation
+    def permutation(n = size, &block)
+      if block_given?
+        old_permutation(n) { |perm| block.call new_collection(perm) }
+        self
+      else
+        result = old_permutation(n)
+        if result.size == 0
+          Grizzly::Enumerator.new([], __method__, n)
+        else
+          Grizzly::Enumerator.new(self, __method__, n, size: result.size)
+        end
+      end
+    end
+
     def each
       result = super
       return new_enumerator(__method__) if result.is_a?(::Enumerator)

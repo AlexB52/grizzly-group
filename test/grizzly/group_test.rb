@@ -10,4 +10,10 @@ class Grizzly::GroupTest < Minitest::Test
   def test_each
     assert_instance_of Grizzly::Enumerator, @subject.each
   end
+
+  def test_permutation
+    expected = []
+    @subject.permutation(2) { |p| expected << p }
+    assert_equal MyGroup, expected.first.class
+  end
 end

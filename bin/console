@@ -6,10 +6,18 @@ require 'byebug'
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
-class MyGroup < Grizzly::Group;end
+class MyGroup < Grizzly::Group
+  def average
+    sum / length.to_f
+  end
+end
+
+def reload!
+  require "grizzly"
+end
 
 def setup
-  a = MyGroup.new (0..10).to_a
+  a = MyGroup.new (1..3).to_a
   e = Grizzly::Enumerator.new(a.select)
 
   [a, e]
