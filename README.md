@@ -37,8 +37,8 @@ UserGroup.new(users).
 ## Roadmap
 
 - [X] [MVP - Modified Array Methods](https://github.com/AlexB52/grizzly-group/issues/3)
-- [ ] [Enumerator & Monads](https://github.com/AlexB52/grizzly-group/issues/1)
-- [ ] [Lazy Enumerator & Monads](https://github.com/AlexB52/grizzly-group/issues/2)
+- [ ] [Enumerators](https://github.com/AlexB52/grizzly-group/issues/1)
+- [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-group/issues/2)
 
 ### Returned Enumerator
 
