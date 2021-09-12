@@ -1,3 +1,5 @@
+:construction: **The gem is not published and is still a work in progress.**
+
 # Grizzly::Group
 
 Grizzly::Group is an attempt to end the predominance of the Array in Ruby by providing a Ruby monad & collection class that behaves like an array but returns a subclass instance instead of a new array.
