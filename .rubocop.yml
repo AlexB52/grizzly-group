@@ -1,0 +1,11 @@
+# .rubocop.yml
+
+AllCops:
+  NewCops: disable
+
+require:
+  - ./array_initialization_cop.rb
+
+Style/ArrayInitialization:
+  Enabled: true
+  InitializeArrayWith: "Array"
