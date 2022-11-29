@@ -2,11 +2,11 @@ module Grizzly
   class Group < Array
     include Groupable
 
-    def transpose(*args)
+    def transpose(*args, **kargs)
       new_collection(super)
     end
 
-    def product(*args)
+    def product(*args, **kargs)
       result = super
       return result if is_self?(result)
       return result unless result.is_a?(Array)
@@ -14,55 +14,55 @@ module Grizzly
       result.map {|product| new_collection(product)}
     end
 
-    def values_at(*args)
+    def values_at(*args, **kargs)
       new_collection(super)
     end
 
-    def rotate(*args)
+    def rotate(*args, **kargs)
       new_collection(super)
     end
 
-    def compact(*args)
+    def compact(*args, **kargs)
       new_collection(super)
     end
 
-    def shuffle(*args)
+    def shuffle(*args, **kargs)
       new_collection(super)
     end
 
-    def reverse(*args)
+    def reverse(*args, **kargs)
       new_collection(super)
     end
 
-    def &(*args)
+    def &(*args, **kargs)
       new_collection(super)
     end
 
-    def |(*args)
+    def |(*args, **kargs)
       new_collection(super)
     end
 
-    def +(*args)
+    def +(*args, **kargs)
       new_collection(super)
     end
 
-    def union(*args)
+    def union(*args, **kargs)
       new_collection(super)
     end
 
-    def -(*args)
+    def -(*args, **kargs)
       new_collection(super)
     end
 
-    def difference(*args)
+    def difference(*args, **kargs)
       new_collection(super)
     end
 
-    def pop(*args)
+    def pop(*args, **kargs)
       subgroup(super)
     end
 
-    def shift(*args)
+    def shift(*args, **kargs)
       subgroup(super)
     end
   end
