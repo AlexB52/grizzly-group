@@ -4,8 +4,12 @@ AllCops:
   NewCops: disable
 
 require:
-  - ./array_initialization_cop.rb
+  - ./cops/cops.rb
 
 Style/ArrayInitialization:
   Enabled: true
-  InitializeArrayWith: "Array"
+  InitializeArrayWith: "Grizzly::Group"
+
+Style/InstanceOfArray:
+  Enabled: true
+  NewInstanceOf: "Array"

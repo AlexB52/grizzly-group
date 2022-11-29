@@ -1,5 +1,3 @@
-require "rubocop"
-
 module RuboCop
   module Cop
     module Style
