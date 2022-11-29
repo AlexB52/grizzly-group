@@ -28,8 +28,8 @@ module RuboCop
 
           add_offense(node, message: ERROR_MSG) do |corrector|
             constant_to_replace = cop_config['InitializeArrayWith']
-            array_items = expression.map(&:source).join(',')
-            corrector.replace(node, "#{constant_to_replace}.new([#{array_items}])")
+            array_items = expression.map(&:value)
+            corrector.replace(node, "#{constant_to_replace}.new(#{array_items})")
           end
         end
       end
