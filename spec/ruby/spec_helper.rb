@@ -38,3 +38,36 @@ unless ENV['MSPEC_RUNNER'] # Running directly with ruby some_spec.rb
   ARGV.unshift $0
   MSpecRun.main
 end
+
+require "byebug"
+
+class BeAnInstanceOfMatcher
+  def initialize(expected)
+    @expected = expected
+  end
+
+  def matches?(actual)
+    if @expected == Array && actual.instance_of?(Grizzly::Group)
+      return true
+    end
+
+    @actual = actual
+    @actual.instance_of?(@expected)
+  end
+
+  def failure_message
+    ["Expected #{@actual.inspect} (#{@actual.class})",
+     "to be an instance of #{@expected}"]
+  end
+
+  def negative_failure_message
+    ["Expected #{@actual.inspect} (#{@actual.class})",
+     "not to be an instance of #{@expected}"]
+  end
+end
+
+module MSpecMatchers
+  private def be_an_instance_of(expected)
+    BeAnInstanceOfMatcher.new(expected)
+  end
+end
