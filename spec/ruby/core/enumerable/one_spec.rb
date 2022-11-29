@@ -10,7 +10,7 @@ describe "Enumerable#one?" do
   end
 
   it "always returns false on empty enumeration" do
-    @empty.one?.should == false
+    @empty.should_not.one?
     @empty.one? { true }.should == false
   end
 
@@ -89,15 +89,6 @@ describe "Enumerable#one?" do
       pattern = EnumerableSpecs::Pattern.new { |x| x == 1 }
       @enum1.one?(pattern).should == true
       pattern.yielded.should == [[0], [1], [2], [-1]]
-    end
-
-    # may raise an exception in future versions
-    ruby_version_is ""..."2.6" do
-      it "ignores block" do
-        @enum2.one?(NilClass) { raise }.should == true
-        [1, 2, nil].one?(NilClass) { raise }.should == true
-        {a: 1}.one?(Array) { raise }.should == true
-      end
     end
 
     it "always returns false on empty enumeration" do

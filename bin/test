@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+../mspec/bin/mspec spec/ruby/core > spec_log.txt

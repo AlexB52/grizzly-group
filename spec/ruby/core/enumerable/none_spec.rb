@@ -10,7 +10,7 @@ describe "Enumerable#none?" do
   end
 
   it "always returns true on empty enumeration" do
-    @empty.none?.should == true
+    @empty.should.none?
     @empty.none? { true }.should == true
   end
 
@@ -98,15 +98,6 @@ describe "Enumerable#none?" do
       pattern = EnumerableSpecs::Pattern.new { |x| x == 3 }
       @enum1.none?(pattern).should == true
       pattern.yielded.should == [[0], [1], [2], [-1]]
-    end
-
-    # may raise an exception in future versions
-    ruby_version_is ""..."2.6" do
-      it "ignores block" do
-        @enum2.none?(Integer) { raise }.should == true
-        [1, 2, nil].none?(TrueClass) { raise }.should == true
-        {a: 1}.none?(Hash) { raise }.should == true
-      end
     end
 
     it "always returns true on empty enumeration" do

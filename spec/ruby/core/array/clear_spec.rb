@@ -16,32 +16,12 @@ describe "Array#clear" do
   it "leaves the Array empty" do
     a = [1]
     a.clear
-    a.empty?.should == true
+    a.should.empty?
     a.size.should == 0
-  end
-
-  ruby_version_is ''...'2.7' do
-    it "keeps tainted status" do
-      a = [1]
-      a.taint
-      a.tainted?.should be_true
-      a.clear
-      a.tainted?.should be_true
-    end
   end
 
   it "does not accept any arguments" do
     -> { [1].clear(true) }.should raise_error(ArgumentError)
-  end
-
-  ruby_version_is ''...'2.7' do
-    it "keeps untrusted status" do
-      a = [1]
-      a.untrust
-      a.untrusted?.should be_true
-      a.clear
-      a.untrusted?.should be_true
-    end
   end
 
   it "raises a FrozenError on a frozen array" do

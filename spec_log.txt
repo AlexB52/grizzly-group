@@ -1,0 +1,201 @@
+ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]
+.............................F.........F................F................................................F............F...............F.F..........FF...........................................E..............E............................E...............
+
+1)
+Array#[] with a subclass of Array returns a subclass instance with [n, m] FAILED
+Expected [1, 2] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:401:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+2)
+Array#[] with a subclass of Array returns a subclass instance with [-n, m] FAILED
+Expected [3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:405:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+3)
+Array#[] with a subclass of Array returns a subclass instance with [n..m] FAILED
+Expected [2, 3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:409:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+4)
+Array#[] with a subclass of Array returns a subclass instance with [n...m] FAILED
+Expected [2, 3] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:413:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+5)
+Array#[] with a subclass of Array returns a subclass instance with [-n..-m] FAILED
+Expected [3, 4, 5] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:417:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+6)
+Array#[] with a subclass of Array returns a subclass instance with [-n...-m] FAILED
+Expected [3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:421:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/element_reference_spec.rb:5:in `<top (required)>'
+
+7)
+Array#flatten returns subclass instance for Array subclasses FAILED
+Expected [] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/flatten_spec.rb:79:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/flatten_spec.rb:4:in `<top (required)>'
+
+8)
+Array#* with an integer with a subclass of Array returns a subclass instance FAILED
+Expected [] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/multiply_spec.rb:80:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/multiply_spec.rb:43:in `<top (required)>'
+
+9)
+Array#slice with a subclass of Array returns a subclass instance with [n, m] FAILED
+Expected [1, 2] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:401:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+10)
+Array#slice with a subclass of Array returns a subclass instance with [-n, m] FAILED
+Expected [3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:405:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+11)
+Array#slice with a subclass of Array returns a subclass instance with [n..m] FAILED
+Expected [2, 3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:409:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+12)
+Array#slice with a subclass of Array returns a subclass instance with [n...m] FAILED
+Expected [2, 3] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:413:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+13)
+Array#slice with a subclass of Array returns a subclass instance with [-n..-m] FAILED
+Expected [3, 4, 5] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:417:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+14)
+Array#slice with a subclass of Array returns a subclass instance with [-n...-m] FAILED
+Expected [3, 4] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/shared/slice.rb:421:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/slice_spec.rb:170:in `<top (required)>'
+
+15)
+Array#uniq returns subclass instance on Array subclasses FAILED
+Expected [1, 2, 3] (Array) to be an instance of ArraySpecs::MyArray
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/uniq_spec.rb:132:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/array/uniq_spec.rb:4:in `<top (required)>'
+
+16)
+Enumerable#each_cons passes element groups to the block FAILED
+Expected #<EnumerableSpecs::Numerous:0x00000001050656c0 @list=[4, 3, 2, 1]>
+to be nil
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_cons_spec.rb:13:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_cons_spec.rb:5:in `<top (required)>'
+
+17)
+Enumerable#each_cons tries to convert n to an Integer using #to_int FAILED
+Expected #<EnumerableSpecs::Numerous:0x00000001089b70e0 @list=[4, 3, 2, 1]> == nil
+to be truthy but was false
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_cons_spec.rb:30:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_cons_spec.rb:5:in `<top (required)>'
+
+18)
+Enumerable#each_slice passes element groups to the block FAILED
+Expected #<EnumerableSpecs::Numerous:0x00000001089e5378 @list=[7, 6, 5, 4, 3, 2, 1]>
+to be nil
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_slice_spec.rb:13:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_slice_spec.rb:5:in `<top (required)>'
+
+19)
+Enumerable#each_slice tries to convert n to an Integer using #to_int FAILED
+Expected #<EnumerableSpecs::Numerous:0x00000001089dd790 @list=[7, 6, 5, 4, 3, 2, 1]> == nil
+to be truthy but was false
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_slice_spec.rb:30:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/each_slice_spec.rb:5:in `<top (required)>'
+
+20)
+Enumerable#grep sets $~ to the last match when given no block FAILED
+Expected #<MatchData "z"> == nil
+to be truthy but was false
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/grep_spec.rb:48:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/grep_spec.rb:4:in `<top (required)>'
+
+21)
+Enumerable#grep_v sets $~ to the last match when given no block FAILED
+Expected "z" == "e"
+to be truthy but was false
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/grep_v_spec.rb:28:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerable/grep_v_spec.rb:4:in `<top (required)>'
+
+22)
+Enumerator::ArithmeticSequence#step returns the original value given to step method ERROR
+ArgumentError: step can't be 0
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/arithmetic_sequence/step_spec.rb:8:in `step'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/arithmetic_sequence/step_spec.rb:8:in `block (3 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/arithmetic_sequence/step_spec.rb:4:in `block in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/arithmetic_sequence/step_spec.rb:3:in `<top (required)>'
+
+23)
+Enumerator#initialize returns self when given an object ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/initialize_spec.rb:15:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/initialize_spec.rb:15:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/initialize_spec.rb:5:in `<top (required)>'
+
+24)
+Enumerator.new creates a new custom enumerator with the given object, iterator and arguments ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:5:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:5:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:5:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+25)
+Enumerator.new creates a new custom enumerator that responds to #each ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:10:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:10:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:10:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+26)
+Enumerator.new creates a new custom enumerator that runs correctly ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:15:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:15:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:15:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+27)
+Enumerator.new aliases the second argument to :each ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:19:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:19:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:19:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+28)
+Enumerator.new doesn't check for the presence of the iterator method ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:23:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:23:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:23:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+29)
+Enumerator.new uses the latest define iterator method ERROR
+ArgumentError: tried to create Proc object without a block
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:32:in `initialize'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:32:in `new'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:32:in `block (2 levels) in <top (required)>'
+/Users/alexbarret/tests/grizzly-group/spec/ruby/core/enumerator/new_spec.rb:3:in `<top (required)>'
+
+Finished in 0.299231 seconds
+
+252 files, 3629 examples, 6279 expectations, 21 failures, 8 errors, 0 tagged
