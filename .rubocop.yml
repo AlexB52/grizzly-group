@@ -12,4 +12,4 @@ Style/ArrayInitialization:
 
 Style/InstanceOfArray:
   Enabled: true
-  NewInstanceOf: "Array"
+  NewInstanceOf: "Grizzly::Group"

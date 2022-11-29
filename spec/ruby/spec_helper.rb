@@ -1,3 +1,5 @@
+require_relative "../../lib/grizzly"
+
 use_realpath = File.respond_to?(:realpath)
 root = File.dirname(__FILE__)
 dir = "fixtures/code"
