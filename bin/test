@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
 mspec/bin/mspec ruby-spec/core/array
+echo
+echo
+
 mspec/bin/mspec ruby-spec/core/enumerable
+echo
+echo
+
 mspec/bin/mspec spec/skipped_tests/core/array/
+echo
+echo

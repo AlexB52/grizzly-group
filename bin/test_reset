@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
-rm -rf ./mspec/
-rm -rf ./ruby-spec/
+if [ -d "./mspec/" ] && [ -d "./ruby-spec/" ]
+then
+  rm -rf ./mspec/
+  rm -rf ./ruby-spec/
+else
+  echo "Skipping resetting repository"
+fi

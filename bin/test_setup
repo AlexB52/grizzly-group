@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+# Reset if needed
+
+`bin/test_reset`
+
 # Clone ruby/spec and MSpec
 
 `git clone https://github.com/ruby/mspec.git mspec`
