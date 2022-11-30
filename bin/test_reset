@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rm -rf ./mspec/
+rm -rf ./ruby-spec/

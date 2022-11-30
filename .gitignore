@@ -8,3 +8,5 @@
 /tmp/
 .byebug_history
 spec_log.txt
+/mspec/
+/ruby-spec/

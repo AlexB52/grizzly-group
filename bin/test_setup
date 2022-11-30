@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+`git clone https://github.com/ruby/mspec.git mspec`
+`git clone https://github.com/ruby/spec.git ruby-spec`
+
+File.open("ruby-spec/spec_helper.rb", "a") do |f|
+  f.write "\n"
+  f.write File.read('config/mspec_override.rb')
+  f.write "\n"
+end
+
+`cp config/skipped_tests.yml ruby-spec/skipped_tests.yml`
+`bin/convert ruby-spec/core/array true`
+system("mspec/bin/mspec ruby-spec/core/array")

@@ -1,0 +1,13 @@
+tests:
+  - core/array/pack/buffer_spec.rb:26
+  - core/array/plus_spec.rb:34
+  - core/array/shared/clone.rb:2
+  - core/array/shared/difference.rb:33
+  - core/array/shared/intersection.rb:67
+  - core/array/shared/union.rb:62
+  - core/array/shuffle_spec.rb:43
+  - core/array/shuffle_spec.rb:50
+  - core/array/sort_by_spec.rb:16
+  - core/array/sort_spec.rb:229
+  - core/array/sort_spec.rb:98
+  - core/array/to_a_spec.rb:5
