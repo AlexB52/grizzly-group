@@ -2,6 +2,8 @@ require "yaml"
 require "singleton"
 require_relative "../lib/grizzly"
 
+class MyGroupArray < Grizzly::Group; end
+
 class SkippedTests
   include Singleton
 
