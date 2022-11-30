@@ -34,6 +34,10 @@ module Grizzly
       new_collection(super)
     end
 
+    def intersection(*args, **kargs)
+      new_collection(super)
+    end
+
     def &(*args, **kargs)
       new_collection(super)
     end

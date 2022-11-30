@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-../mspec/bin/mspec spec/ruby/core > spec_log.txt
+mspec/bin/mspec ruby-spec/core/array
+mspec/bin/mspec ruby-spec/core/enumerable
+mspec/bin/mspec spec/skipped_tests/core/array/

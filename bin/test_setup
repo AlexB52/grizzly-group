@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
+# Clone ruby/spec and MSpec
+
 `git clone https://github.com/ruby/mspec.git mspec`
 `git clone https://github.com/ruby/spec.git ruby-spec`
+
+# Override MSpec to skip known failing tests
 
 File.open("ruby-spec/spec_helper.rb", "a") do |f|
   f.write "\n"
@@ -10,5 +14,8 @@ File.open("ruby-spec/spec_helper.rb", "a") do |f|
 end
 
 `cp config/skipped_tests.yml ruby-spec/skipped_tests.yml`
+
+# Wrap Array initialization with Grizzly::Group
+
 `bin/convert ruby-spec/core/array true`
-system("mspec/bin/mspec ruby-spec/core/array")
+`bin/convert ruby-spec/core/enumerable true`
