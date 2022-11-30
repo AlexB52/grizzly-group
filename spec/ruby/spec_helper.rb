@@ -39,35 +39,54 @@ unless ENV['MSPEC_RUNNER'] # Running directly with ruby some_spec.rb
   MSpecRun.main
 end
 
-require "byebug"
+# require "byebug"
 
-class BeAnInstanceOfMatcher
-  def initialize(expected)
-    @expected = expected
-  end
+# class BeAnInstanceOfMatcher
+#   def initialize(expected)
+#     @expected = expected
+#   end
 
-  def matches?(actual)
-    if @expected == Array && actual.instance_of?(Grizzly::Group)
+#   def matches?(actual)
+#     if @expected == Array && actual.instance_of?(Grizzly::Group)
+#       return true
+#     end
+
+#     @actual = actual
+#     @actual.instance_of?(@expected)
+#   end
+
+#   def failure_message
+#     ["Expected #{@actual.inspect} (#{@actual.class})",
+#      "to be an instance of #{@expected}"]
+#   end
+
+#   def negative_failure_message
+#     ["Expected #{@actual.inspect} (#{@actual.class})",
+#      "not to be an instance of #{@expected}"]
+#   end
+# end
+
+# module MSpecMatchers
+#   private def be_an_instance_of(expected)
+#     BeAnInstanceOfMatcher.new(expected)
+#   end
+# end
+
+module MSpec
+  def self.protect(location, &block)
+    begin
+      @env.instance_exec(&block)
       return true
+    rescue SystemExit => e
+      raise e
+    rescue SkippedSpecError => e
+      @skips << [e, block]
+      return false
+    rescue Object => exc
+      File.open("failing-specs.txt", "a") { |f| f.write "#{block}\n" }
+      register_exit 1
+      actions :exception, ExceptionState.new(current && current.state, location, exc)
+      return false
     end
-
-    @actual = actual
-    @actual.instance_of?(@expected)
-  end
-
-  def failure_message
-    ["Expected #{@actual.inspect} (#{@actual.class})",
-     "to be an instance of #{@expected}"]
-  end
-
-  def negative_failure_message
-    ["Expected #{@actual.inspect} (#{@actual.class})",
-     "not to be an instance of #{@expected}"]
-  end
-end
-
-module MSpecMatchers
-  private def be_an_instance_of(expected)
-    BeAnInstanceOfMatcher.new(expected)
   end
 end
