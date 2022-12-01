@@ -16,3 +16,6 @@ unless ENV['MSPEC_RUNNER']
   ARGV.unshift $0
   MSpecRun.main
 end
+
+# fixture sub class
+class MyGroup < Grizzly::Group; end

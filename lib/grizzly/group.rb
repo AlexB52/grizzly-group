@@ -3,7 +3,11 @@ module Grizzly
     include Groupable
 
     def transpose(*args, **kargs)
-      new_collection(super)
+      result = super
+      if self.all? { |collection| collection.is_a?(self.class) }
+        result = result.map { |collection| new_collection(collection) }
+      end
+      new_collection(result)
     end
 
     def product(*args, **kargs)

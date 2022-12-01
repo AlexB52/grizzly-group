@@ -1,7 +1,5 @@
 require_relative '../../spec_helper'
 
-class MyArray < Grizzly::Group; end
-
 describe "Array#plus" do
   # core/array/pack/buffer_spec.rb:26
   it "raises TypeError exception if buffer is not String" do

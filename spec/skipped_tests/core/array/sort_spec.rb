@@ -8,6 +8,11 @@ describe "Array#sort" do
     a.sort {  0 }.should be_an_instance_of(Grizzly::Group)
     a.sort { -1 }.should be_an_instance_of(Grizzly::Group)
   end
+
+  it "returns subclass instance on Array subclasses" do
+    ary = MyGroup[1, 2, 3]
+    ary.sort.should be_an_instance_of(MyGroup)
+  end
 end
 
 describe "Array#sort!" do
