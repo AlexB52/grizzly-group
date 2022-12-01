@@ -2,7 +2,7 @@
 
 # Reset if needed
 
-`bin/test_reset`
+`bin/spec/reset`
 
 # Clone ruby/spec and MSpec
 
@@ -18,9 +18,3 @@ File.open("ruby-spec/spec_helper.rb", "a") do |f|
 end
 
 `cp config/skipped_tests.yml ruby-spec/skipped_tests.yml`
-
-# Wrap Array initialization with Grizzly::Group
-
-`bin/convert ruby-spec/core/array true`
-`bin/convert ruby-spec/core/enumerable true`
-`find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyGroupArray/g" {} \\;`

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+bin/convert ruby-spec/core/array true
+bin/convert ruby-spec/core/enumerable true
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyGroupArray/g" {} \\;
