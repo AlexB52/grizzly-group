@@ -1,3 +1,4 @@
+require "byebug"
 require_relative "../../lib/grizzly"
 
 # Running directly with ruby some_spec.rb

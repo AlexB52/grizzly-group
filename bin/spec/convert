@@ -3,3 +3,4 @@
 bin/convert ruby-spec/core/array true
 bin/convert ruby-spec/core/enumerable true
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyGroupArray/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Array)/be_an_instance_of(Grizzly::Group)/g" {} \;

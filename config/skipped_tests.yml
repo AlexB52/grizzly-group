@@ -28,3 +28,19 @@ tests:
   - core/array/transpose_spec.rb:47
   - core/array/union_spec.rb:17
   - core/array/values_at_spec.rb:60
+  - core/array/allocate_spec.rb:4
+  - core/array/flatten_spec.rb:79
+  - core/array/flatten_spec.rb:248
+  - core/array/new_spec.rb:5
+  - core/array/permutation_spec.rb:26
+  - core/array/permutation_spec.rb:35
+  - core/array/sample_spec.rb:36
+  - core/array/sample_spec.rb:69
+  - core/array/shared/collect.rb:11
+  - core/array/sort_spec.rb:84
+  - core/array/sort_spec.rb:91
+  - core/array/sort_spec.rb:215
+  - core/array/sort_spec.rb:222
+  - core/array/zip_spec.rb:62
+
+-todo:

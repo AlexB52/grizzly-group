@@ -1,10 +1,26 @@
 module Grizzly
   module Groupable
-    def zip(*args)
+    def zip(*other_arrays)
       result = super
       return result unless result.is_a?(Array)
 
-      result.map {|zipped| new_collection(zipped)}
+      type = :self
+      other_arrays.each do |array|
+        case array
+        when self.class
+        when Grizzly::Group
+          type = :group
+        else
+          type = :array
+          break
+        end
+      end
+
+      case type
+      when :self  then result.map { |a| new_collection(a) }
+      when :group then result.map { |a| Grizzly::Group.new(a) }
+      else             result
+      end
     end
 
     def partition(*args)

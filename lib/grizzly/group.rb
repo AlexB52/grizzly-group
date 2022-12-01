@@ -2,7 +2,7 @@ module Grizzly
   class Group < Array
     include Groupable
 
-    def transpose(*args, **kargs)
+    def transpose(*args)
       result = super
       if self.all? { |collection| collection.is_a?(self.class) }
         result = result.map { |collection| new_collection(collection) }
@@ -10,7 +10,7 @@ module Grizzly
       new_collection(result)
     end
 
-    def product(*args, **kargs)
+    def product(*args)
       result = super
       return result if is_self?(result)
       return result unless result.is_a?(Array)
@@ -18,15 +18,15 @@ module Grizzly
       result.map {|product| new_collection(product)}
     end
 
-    def values_at(*args, **kargs)
+    def values_at(*args)
       new_collection(super)
     end
 
-    def rotate(*args, **kargs)
+    def rotate(*args)
       new_collection(super)
     end
 
-    def compact(*args, **kargs)
+    def compact(*args)
       new_collection(super)
     end
 
@@ -34,43 +34,51 @@ module Grizzly
       new_collection(super)
     end
 
-    def reverse(*args, **kargs)
+    def reverse(*args)
       new_collection(super)
     end
 
-    def intersection(*args, **kargs)
+    def intersection(*args)
       new_collection(super)
     end
 
-    def &(*args, **kargs)
+    def &(*args)
       new_collection(super)
     end
 
-    def |(*args, **kargs)
+    def |(*args)
       new_collection(super)
     end
 
-    def +(*args, **kargs)
+    def +(*args)
       new_collection(super)
     end
 
-    def union(*args, **kargs)
+    def union(*args)
       new_collection(super)
     end
 
-    def -(*args, **kargs)
+    def -(*args)
       new_collection(super)
     end
 
-    def difference(*args, **kargs)
+    def difference(*args)
       new_collection(super)
     end
 
-    def pop(*args, **kargs)
+    def pop(*args)
       subgroup(super)
     end
 
-    def shift(*args, **kargs)
+    def shift(*args)
+      subgroup(super)
+    end
+
+    def flatten(*args)
+      new_collection(super)
+    end
+
+    def sample(*args)
       subgroup(super)
     end
   end

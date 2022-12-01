@@ -33,6 +33,7 @@ module MSpec
       return false
     rescue Object => exc
       return true if SkippedTests.instance.skip?(block.to_s)
+      # File.open("failed-specs.txt", "a") { |f| f.write "#{block.to_s}\n"}
 
       actions :exception, ExceptionState.new(current && current.state, location, exc)
       register_exit 1
