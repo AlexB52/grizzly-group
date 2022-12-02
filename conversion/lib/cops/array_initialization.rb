@@ -4,7 +4,8 @@ module RuboCop
       class ArrayInitialization < Base
         extend RuboCop::Cop::AutoCorrector
 
-        ERROR_MSG = "an Array should not be initialized with the literal constructor []"
+        ERROR_MSG_LITERAL = "an Array should not be initialized with the literal constructor []"
+        ERROR_MSG_NEW = "an Array should not be initialized with .new"
 
         def_node_matcher :array_literal, <<~PATTERN
           (array $...)
@@ -18,23 +19,16 @@ module RuboCop
           (send (send ...) :== (array ...))
         PATTERN
 
-        def_node_matcher :array_initialization, <<~PATTERN
-          (send (const nil? :Array) :new (array $...))
-        PATTERN
-
-        def_node_matcher :array_length_initialization, <<~PATTERN
-          (send (const nil? :Array) :new $(int ...))
+        def_node_matcher :generic_array_initialization, <<~PATTERN
+          (send (const nil? :Array) :new $...)
         PATTERN
 
         def on_send(node)
-          expression = array_initialization(node)
-          expression ||= array_length_initialization(node)
+          return unless (expression = generic_array_initialization(node))
 
-          return unless expression
-
-          add_offense(node, message: ERROR_MSG) do |corrector|
-            values = expression.is_a?(Array) ?  expression.map(&:value) : expression.value
-            corrector.replace node, correction(values)
+          add_offense(node, message: ERROR_MSG_NEW) do |corrector|
+            a, b = expression.map(&:source)
+            corrector.replace node, format_correction(first: a , second: b)
           end
         end
 
@@ -43,15 +37,19 @@ module RuboCop
           return if array_create(node.parent)
           return if array_spec_matched(node.parent)
 
-          add_offense(node, message: ERROR_MSG) do |corrector|
-            corrector.replace node, correction(expression.map(&:value))
+          add_offense(node, message: ERROR_MSG_LITERAL) do |corrector|
+            corrector.replace node, format_correction(first: expression.map(&:value))
           end
         end
 
         private
 
-        def correction(values, constant_to_replace = cop_config['InitializeArrayWith'])
-          "#{constant_to_replace}.new(#{values})"
+        def format_correction(first: nil, second: nil, constant: cop_config['InitializeArrayWith'])
+          result = "#{constant}.new(#{first})"
+          if second
+            result = %Q{#{constant}.new(#{first}, #{second})}
+          end
+          result
         end
       end
     end

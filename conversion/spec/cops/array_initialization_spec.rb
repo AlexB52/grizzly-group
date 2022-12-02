@@ -20,7 +20,7 @@ module RuboCop
         it 'registers an offense when using an Array initialization' do
           expect_offense(<<~RUBY)
             a = Array.new([1, 2, 3])
-                ^^^^^^^^^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+                ^^^^^^^^^^^^^^^^^^^^ an Array should not be initialized with .new
           RUBY
 
           expect_correction(<<~RUBY)
@@ -28,14 +28,36 @@ module RuboCop
           RUBY
         end
 
-        it 'registers an offense when Array is instantiated with a number' do
+        it 'registers an offense when Array is instantiated with a length' do
           expect_offense(<<~RUBY)
             a = Array.new(1) {}
-                ^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+                ^^^^^^^^^^^^ an Array should not be initialized with .new
           RUBY
 
           expect_correction(<<~RUBY)
             a = AnotherClass.new(1) {}
+          RUBY
+        end
+
+        it 'registers an offense when Array is instantiated with a length and a default value' do
+          expect_offense(<<~RUBY)
+            a = Array.new(99, "something")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^ an Array should not be initialized with .new
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new(99, "something")
+          RUBY
+        end
+
+        it 'registers an offense when Array is instantiated with two variables' do
+          expect_offense(<<~RUBY)
+            a = Array.new(a, b)
+                ^^^^^^^^^^^^^^^ an Array should not be initialized with .new
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new(a, b)
           RUBY
         end
 
