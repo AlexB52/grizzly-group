@@ -28,6 +28,17 @@ module RuboCop
           RUBY
         end
 
+        it 'registers an offense when Array is instantiated with a number' do
+          expect_offense(<<~RUBY)
+            a = Array.new(1) {}
+                ^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new(1) {}
+          RUBY
+        end
+
         it 'does not register an offense when doing a spec check' do
           expect_no_offenses(<<~RUBY)
             a == [1,2,3]

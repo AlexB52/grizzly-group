@@ -22,13 +22,19 @@ module RuboCop
           (send (const nil? :Array) :new (array $...))
         PATTERN
 
+        def_node_matcher :array_length_initialization, <<~PATTERN
+          (send (const nil? :Array) :new $(int ...))
+        PATTERN
+
         def on_send(node)
-          return unless (expression = array_initialization(node))
+          expression = array_initialization(node)
+          expression ||= array_length_initialization(node)
+
+          return unless expression
 
           add_offense(node, message: ERROR_MSG) do |corrector|
-            constant_to_replace = cop_config['InitializeArrayWith']
-            array_items = expression.map(&:value)
-            corrector.replace(node, "#{constant_to_replace}.new(#{array_items})")
+            values = expression.is_a?(Array) ?  expression.map(&:value) : expression.value
+            corrector.replace node, correction(values)
           end
         end
 
@@ -38,10 +44,14 @@ module RuboCop
           return if array_spec_matched(node.parent)
 
           add_offense(node, message: ERROR_MSG) do |corrector|
-            constant_to_replace = cop_config['InitializeArrayWith']
-            array_items = expression.map(&:value)
-            corrector.replace(node, "#{constant_to_replace}.new(#{array_items})")
+            corrector.replace node, correction(expression.map(&:value))
           end
+        end
+
+        private
+
+        def correction(values, constant_to_replace = cop_config['InitializeArrayWith'])
+          "#{constant_to_replace}.new(#{values})"
         end
       end
     end
