@@ -7,7 +7,7 @@ module RuboCop
         include RuboCop::RSpec::ExpectOffense
 
         before do
-          cop_config['InitializeArrayWith'] = 'Array'
+          cop_config['InitializeArrayWith'] = 'AnotherClass'
         end
 
         it 'registers an offense when using [] literal constructor' do
@@ -17,9 +17,14 @@ module RuboCop
           RUBY
         end
 
-        it 'does not register an offense when using an initialization' do
-          expect_no_offenses(<<~RUBY)
+        it 'registers an offense when using an Array initialization' do
+          expect_offense(<<~RUBY)
             a = Array.new([1, 2, 3])
+                ^^^^^^^^^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new([1, 2, 3])
           RUBY
         end
 
@@ -36,7 +41,7 @@ module RuboCop
           RUBY
 
           expect_correction(<<~RUBY)
-            a = Array.new([1, 2, 3])
+            a = AnotherClass.new([1, 2, 3])
           RUBY
         end
 
@@ -47,7 +52,7 @@ module RuboCop
           RUBY
 
           expect_correction(<<~RUBY)
-            a = Array.new([1, 2, 3])
+            a = AnotherClass.new([1, 2, 3])
           RUBY
         end
 
@@ -58,7 +63,7 @@ module RuboCop
           RUBY
 
           expect_correction(<<~RUBY)
-            a = Array.new(["1", "2", "3"])
+            a = AnotherClass.new(["1", "2", "3"])
           RUBY
         end
 
