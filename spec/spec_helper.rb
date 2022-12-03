@@ -1,7 +1,7 @@
 require "grizzly"
 require 'byebug'
 
-Group = Grizzly::Group
+Group = Grizzly::Collection
 
 # Running directly with ruby some_spec.rb
 unless ENV['MSPEC_RUNNER']

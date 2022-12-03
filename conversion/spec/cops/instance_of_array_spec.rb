@@ -7,7 +7,7 @@ module RuboCop
         include RuboCop::RSpec::ExpectOffense
 
         before do
-          cop_config['NewInstanceOf'] = 'Grizzly::Group'
+          cop_config['NewInstanceOf'] = 'Grizzly::Collection'
         end
 
         it 'registers an offense when using instance_of(Array)' do
@@ -17,7 +17,7 @@ module RuboCop
           RUBY
 
           expect_correction(<<~RUBY)
-            be_an_instance_of(Grizzly::Group)
+            be_an_instance_of(Grizzly::Collection)
           RUBY
         end
 

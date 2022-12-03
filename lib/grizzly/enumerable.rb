@@ -1,5 +1,5 @@
 module Grizzly
-  module Groupable
+  module Enumerable
     def zip(*other_arrays)
       result = super
       return result unless result.is_a?(Array)
@@ -8,7 +8,7 @@ module Grizzly
       other_arrays.each do |array|
         case array
         when self.class
-        when Grizzly::Group
+        when Grizzly::Collection
           type = :group
         else
           type = :array
@@ -18,7 +18,7 @@ module Grizzly
 
       case type
       when :self  then result.map { |a| new_collection(a) }
-      when :group then result.map { |a| Grizzly::Group.new(a) }
+      when :group then result.map { |a| Grizzly::Collection.new(a) }
       else             result
       end
     end

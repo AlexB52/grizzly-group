@@ -8,8 +8,8 @@ require:
 
 Style/ArrayInitialization:
   Enabled: true
-  InitializeArrayWith: Grizzly::Group
+  InitializeArrayWith: Grizzly::Collection
 
 Style/InstanceOfArray:
   Enabled: true
-  NewInstanceOf: Grizzly::Group
+  NewInstanceOf: Grizzly::Collection

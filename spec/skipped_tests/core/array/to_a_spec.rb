@@ -1,6 +1,6 @@
 require_relative '../../spec_helper'
 
-class MyWeirdGroup < Grizzly::Group
+class MyWeirdGroup < Grizzly::Collection
   def initialize(a, b)
     self << a <<b
   end
@@ -9,7 +9,7 @@ end
 describe "Array#to_a" do
   # core/array/to_a_spec.rb:5
   it "returns an array" do
-    a = Grizzly::Group.new([1, 2, 3])
+    a = Grizzly::Collection.new([1, 2, 3])
     a.to_a.should == [1, 2, 3]
     a.to_a.should be_an_instance_of(Array)
   end

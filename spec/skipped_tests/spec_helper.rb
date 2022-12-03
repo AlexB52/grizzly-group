@@ -19,4 +19,4 @@ unless ENV['MSPEC_RUNNER']
 end
 
 # fixture sub class
-class MyGroup < Grizzly::Group; end
+class MyCollection < Grizzly::Collection; end

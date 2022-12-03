@@ -3,7 +3,7 @@ require_relative '../../spec_helper'
 describe "Array#shuffle" do
   # core/array/shuffle_spec.rb:24
   it "returns subclass instances with Array subclass" do
-    MyGroup[1, 2, 3].shuffle.should be_an_instance_of(MyGroup)
+    MyCollection[1, 2, 3].shuffle.should be_an_instance_of(MyCollection)
   end
 
   # core/array/shuffle_spec.rb:43
@@ -11,7 +11,7 @@ describe "Array#shuffle" do
     random = mock("array_shuffle_random")
     random.should_receive(:rand).at_least(1).times.and_return(0.3)
 
-    Grizzly::Group.new([1, 2]).shuffle(random: random).should be_an_instance_of(Grizzly::Group)
+    Grizzly::Collection.new([1, 2]).shuffle(random: random).should be_an_instance_of(Grizzly::Collection)
   end
 
   # core/array/shuffle_spec.rb:50
@@ -21,6 +21,6 @@ describe "Array#shuffle" do
     random = mock("array_shuffle_random")
     random.should_receive(:rand).at_least(1).times.and_return(value)
 
-    Grizzly::Group.new([1, 2]).shuffle(random: random).should be_an_instance_of(Grizzly::Group)
+    Grizzly::Collection.new([1, 2]).shuffle(random: random).should be_an_instance_of(Grizzly::Collection)
   end
 end

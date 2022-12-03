@@ -1,6 +1,6 @@
 module Grizzly
-  class Group < Array
-    include Groupable
+  class Collection < Array
+    include Grizzly::Enumerable
 
     def transpose(*args)
       result = super

@@ -1,10 +1,10 @@
 require "test_helper"
 
-class Grizzly::GroupTest < Minitest::Test
-  class MyGroup < Grizzly::Group; end
+class Grizzly::CollectionTest < Minitest::Test
+  class MyCollection < Grizzly::Collection; end
 
   def setup
-    @subject = MyGroup.new (0..10).to_a
+    @subject = MyCollection.new (0..10).to_a
   end
 
   def test_each

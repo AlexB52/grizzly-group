@@ -1,12 +1,12 @@
 :construction: **The gem is not published and is still a work in progress.**
 
-# Grizzly::Group
+# Grizzly::Collection
 
-Grizzly::Group is an attempt to end the predominance of the Array in Ruby by providing a Ruby monad & collection class that behaves like an array but returns a subclass instance instead of a new array.
+Grizzly::Collection is an attempt to end the predominance of the Array in Ruby by providing a Ruby monad & collection class that behaves like an array but returns a subclass instance instead of a new array.
 
 The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. This is an attempt to solve what is intuitively expected from sugrouping methods like `Array#select, Array#partition, Array#reject` to name a few.
 
-The library is tested against [ruby/spec](https://github.com/ruby/spec) Array & Enumerable (soon to be tested against Enumerator) to avoid undesirable side effects. The Grizzly::Group class works and is subclassed from Array, you will love to hate it.
+The library is tested against [ruby/spec](https://github.com/ruby/spec) Array & Enumerable (soon to be tested against Enumerator) to avoid undesirable side effects. The Grizzly::Collection class works and is subclassed from Array, you will love to hate it.
 
 Other examples of Monads & Collections: [Dry::Monads::List](https://dry-rb.org/gems/dry-monads/1.3/list/)
 
@@ -18,7 +18,7 @@ require 'grizzly-group'
 User = Struct.new(:age)
 users = (0..10).to_a.map { |i| User.new(i) }
 
-class UserGroup < Grizzly::Group
+class UserGroup < Grizzly::Collection
   def average_age
     sum(&:age) / size.to_f
   end
