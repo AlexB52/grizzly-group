@@ -13,7 +13,7 @@ Other examples of Monads & Collections: [Dry::Monads::List](https://dry-rb.org/g
 ## Usage
 
 ```ruby
-require 'grizzly-group'
+require 'grizzly-rb'
 
 User = Struct.new(:age)
 users = (0..10).to_a.map { |i| User.new(i) }
@@ -38,9 +38,9 @@ UserGroup.new(users).
 
 ## Roadmap
 
-- [X] [MVP - Modified Array Methods](https://github.com/AlexB52/grizzly-group/issues/3)
-- [ ] [Enumerators](https://github.com/AlexB52/grizzly-group/issues/1)
-- [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-group/issues/2)
+- [X] [MVP - Modified Array Methods](https://github.com/AlexB52/grizzly-rb/issues/3)
+- [ ] [Enumerators](https://github.com/AlexB52/grizzly-rb/issues/1)
+- [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
 
 ### Returned Enumerator
 
@@ -51,7 +51,7 @@ UserGroup.new(users).
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'grizzly-group'
+gem 'grizzly-rb'
 ```
 
 And then execute:
@@ -60,7 +60,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install grizzly-group
+    $ gem install grizzly-rb
 
 ## Development
 
@@ -83,7 +83,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/grizzly-group.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/grizzly-rb.
 
 
 ## License
