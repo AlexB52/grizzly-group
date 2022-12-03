@@ -24,7 +24,7 @@ class UserGroup < Grizzly::Collection
   end
 end
 
-UserGroup.new(users).
+group = UserGroup.new(users).
   select { |user| user.age.even? }.
   average_age
 # => 5.0

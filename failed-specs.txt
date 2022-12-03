@@ -1,0 +1,5 @@
+
+
+
+core/array/multiply_spec.rb:6
+core/array/multiply_spec.rb:23

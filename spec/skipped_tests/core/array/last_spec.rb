@@ -9,4 +9,8 @@ describe "Array#last" do
     MyCollection[1, 2, 3].last(1).should be_an_instance_of(MyCollection)
     MyCollection[1, 2, 3].last(2).should be_an_instance_of(MyCollection)
   end
+
+  it "returns the element when no argument are passed" do
+    MyCollection[[1], [2], [3]].last.should be_an_instance_of(Array)
+  end
 end

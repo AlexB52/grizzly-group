@@ -54,6 +54,10 @@ module Grizzly
       new_collection(super)
     end
 
+    def *(*args)
+      subgroup(super)
+    end
+
     def union(*args)
       new_collection(super)
     end
@@ -78,8 +82,56 @@ module Grizzly
       new_collection(super)
     end
 
-    def sample(*args)
+    def sample(*args, **karg)
       subgroup(super)
+    end
+
+    def drop(*args)
+      new_collection(super)
+    end
+
+    def drop_while(*args)
+      subgroup(super)
+    end
+
+    def last(*args)
+      result = super
+      return result if args == []
+
+      subgroup(result)
+    end
+
+    def slice(*args)
+      result = super
+      return result if args.count == 1 && args.first.is_a?(Integer)
+
+      subgroup(result)
+    end
+
+    def slice!(*args)
+      result = super
+      return result if args.count == 1 && args.first.is_a?(Integer)
+
+      subgroup(result)
+    end
+
+    def [](*args)
+      result = super
+      return result if args.count == 1 && args.first.is_a?(Integer)
+
+      subgroup(result)
+    end
+
+    def take(*args)
+      new_collection(super)
+    end
+
+    def take_while(*args)
+      subgroup(super)
+    end
+
+    def uniq(*args)
+      new_collection(super)
     end
   end
 end
