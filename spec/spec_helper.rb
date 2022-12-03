@@ -1,5 +1,4 @@
 require "grizzly"
-require 'byebug'
 
 Group = Grizzly::Collection
 
