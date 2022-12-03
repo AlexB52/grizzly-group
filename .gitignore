@@ -10,3 +10,4 @@
 spec_log.txt
 /mspec/
 /ruby-spec/
+.ruby-version

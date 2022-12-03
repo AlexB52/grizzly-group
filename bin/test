@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 
 mspec/bin/mspec ruby-spec/core/array
+RETURN1=$?
+
 echo
 echo
 
 mspec/bin/mspec ruby-spec/core/enumerable
+RETURN2=$?
+
 echo
 echo
 
 mspec/bin/mspec spec/skipped_tests/core/array/
-echo
-echo
+RETURN3=$?
+
+RETURN=$(($RETURN1 + $RETURN2 + RETURN3))
+
+if [ $RETURN -gt "0" ]; then
+echo "Tests failed"
+exit 1
+fi
+exit 0

@@ -1,0 +1,55 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby:
+          - '2.7'
+          # - '3.0'
+          # - '3.1'
+    name: Ruby ${{ matrix.ruby }} tests
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - run: bin/setup
+    - run: bin/test
+
+  conversions-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./conversion
+    strategy:
+      matrix:
+        ruby:
+          - '2.7'
+          - '3.0'
+          - '3.1'
+    name: Conversion tests - Ruby ${{ matrix.ruby }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+    - run: bundle install
+    - run: bundle exec rspec spec
