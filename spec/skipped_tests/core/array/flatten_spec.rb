@@ -1,8 +1,8 @@
 require_relative '../../spec_helper'
 
 describe "Array#flatten" do
+  # core/array/flatten_spec.rb:79
   ruby_version_is ''...'3.0' do
-    # core/array/flatten_spec.rb:79
     it "returns subclass instance for Array subclasses" do
       MyCollection[].flatten.should be_an_instance_of(MyCollection)
       MyCollection[1, 2, 3].flatten.should be_an_instance_of(MyCollection)
@@ -12,6 +12,7 @@ describe "Array#flatten" do
     end
   end
 
+  # core/array/flatten_spec.rb:89
   ruby_version_is '3.0' do
     it "returns subclass instance for Array subclasses" do
       MyCollection[].flatten.should be_an_instance_of(MyCollection)

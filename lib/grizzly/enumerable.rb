@@ -72,11 +72,10 @@ module Grizzly
     end
 
     def first(*args)
-      subgroup(super)
-    end
+      result = super
+      return result if args == []
 
-    def last(*args)
-      subgroup(super)
+      subgroup(result)
     end
 
     private
