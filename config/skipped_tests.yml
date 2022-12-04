@@ -6,6 +6,7 @@ tests:
   - core/array/drop_while_spec.rb:24
   - core/array/first_spec.rb:76
   - core/array/flatten_spec.rb:248
+  - core/array/flatten_spec.rb:79
   - core/array/flatten_spec.rb:89
   - core/array/last_spec.rb:70
   - core/array/multiply_spec.rb:88
