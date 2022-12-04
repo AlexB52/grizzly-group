@@ -36,12 +36,20 @@ marks.select { |mark| mark.score.even? }.
 # => 91.0
 ```
 
+## Ruby support
+
+Ruby 2.7+
+
 ## Roadmap
 
 - [X] MVP: Array methods
 - [ ] MVP: Enumerable methods
 - [ ] [Enumerators](https://github.com/AlexB52/grizzly-rb/issues/1)
 - [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
+
+## Benchmark
+
+TODO
 
 ## Installation
 
