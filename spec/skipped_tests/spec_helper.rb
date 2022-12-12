@@ -17,5 +17,30 @@ unless ENV['MSPEC_RUNNER']
   MSpecRun.main
 end
 
-# fixture sub class
+# Fixtures Array
+
 class MyCollection < Grizzly::Collection; end
+
+# Fixtures Enumerable
+
+class YieldsMulti < Grizzly::Collection
+  def each
+    yield 1,2
+    yield 3,4,5
+    yield 6,7,8,9
+  end
+end
+
+class ReverseComparable
+  include Comparable
+  def initialize(num)
+    @num = num
+  end
+
+  attr_accessor :num
+
+  # Reverse comparison
+  def <=>(other)
+    other.num <=> @num
+  end
+end
