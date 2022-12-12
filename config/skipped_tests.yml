@@ -60,10 +60,10 @@ tests:
   - core/enumerable/minmax_spec.rb:16
   - core/enumerable/partition_spec.rb:14
   - core/enumerable/partition_spec.rb:6
-
-todo:
   - core/enumerable/reject_spec.rb:19
   - core/enumerable/reject_spec.rb:6
+
+todo:
   - core/enumerable/shared/find_all.rb:10
   - core/enumerable/shared/find_all.rb:25
   - core/enumerable/shared/take.rb:12
