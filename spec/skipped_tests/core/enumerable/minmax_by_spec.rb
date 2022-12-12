@@ -32,7 +32,7 @@ describe "Enumerable#minmax_by" do
 
   it "gathers whole arrays as elements when each yields multiple" do
     multi = YieldsMulti.new
-    multi.minmax_by {|e| e.size}.should == [Grizzly::Collection.new([1, 2]), Grizzly::Collection.new([6, 7, 8, 9])]
+    multi.minmax_by {|e| e.size}.should == YieldsMulti.new([[1, 2], [6, 7, 8, 9]])
   end
 
   it "returns an instance of the Enumerable class" do

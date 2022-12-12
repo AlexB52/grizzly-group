@@ -12,8 +12,8 @@ describe "Enumerable#group_by" do
   it "gathers whole arrays as elements when each yields multiple" do
     e = YieldsMulti.new
     h = e.group_by { |i| i }
-    h.should == { YieldsMulti.new([1, 2]) => [YieldsMulti.new([1, 2])],
-                  YieldsMulti.new([6, 7, 8, 9]) => [YieldsMulti.new([6, 7, 8, 9])],
-                  YieldsMulti.new([3, 4, 5]) => [YieldsMulti.new([3, 4, 5])] }
+    h.should == { [1, 2] => YieldsMulti.new([[1, 2]]),
+                  [6, 7, 8, 9] => YieldsMulti.new([[6, 7, 8, 9]]),
+                  [3, 4, 5] => YieldsMulti.new([[3, 4, 5]])}
   end
 end

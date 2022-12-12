@@ -23,11 +23,25 @@ class MyCollection < Grizzly::Collection; end
 
 # Fixtures Enumerable
 
-class YieldsMulti < Grizzly::Collection
+class YieldsMulti
+  include Grizzly::Enumerable
+
+  attr_accessor :list
+  def initialize(list = (1..9).to_a)
+    @list = list
+  end
+
+  def ==(other)
+    list == other.list
+  end
+
   def each
-    yield 1,2
-    yield 3,4,5
-    yield 6,7,8,9
+    i = 2
+    list = @list.dup
+    until list.empty?
+      yield *list.shift(i)
+      i += 1
+    end
   end
 end
 

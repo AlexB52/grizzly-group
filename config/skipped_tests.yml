@@ -57,9 +57,9 @@ tests:
   - core/enumerable/minmax_by_spec.rb:26
   - core/enumerable/minmax_by_spec.rb:33
   - core/enumerable/minmax_by_spec.rb:38
+  - core/enumerable/minmax_spec.rb:16
 
 todo:
-  - core/enumerable/minmax_spec.rb:16
   - core/enumerable/partition_spec.rb:14
   - core/enumerable/partition_spec.rb:6
   - core/enumerable/reject_spec.rb:19
