@@ -62,10 +62,10 @@ tests:
   - core/enumerable/partition_spec.rb:6
   - core/enumerable/reject_spec.rb:19
   - core/enumerable/reject_spec.rb:6
-
-todo:
   - core/enumerable/shared/find_all.rb:10
   - core/enumerable/shared/find_all.rb:25
+
+todo:
   - core/enumerable/shared/take.rb:12
   - core/enumerable/shared/take.rb:19
   - core/enumerable/shared/take.rb:23
