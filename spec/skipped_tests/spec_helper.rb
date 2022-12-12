@@ -23,6 +23,22 @@ class MyCollection < Grizzly::Collection; end
 
 # Fixtures Enumerable
 
+class Numerous
+  include Grizzly::Enumerable
+  attr_accessor :list
+  def initialize(list = [2, 5, 3, 6, 1, 4])
+    @list = list
+  end
+
+  def each
+    @list.each { |i| yield i }
+  end
+
+  def ==(other)
+    list == other.list
+  end
+end
+
 class YieldsMulti
   include Grizzly::Enumerable
 

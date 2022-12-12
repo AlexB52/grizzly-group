@@ -58,10 +58,10 @@ tests:
   - core/enumerable/minmax_by_spec.rb:33
   - core/enumerable/minmax_by_spec.rb:38
   - core/enumerable/minmax_spec.rb:16
-
-todo:
   - core/enumerable/partition_spec.rb:14
   - core/enumerable/partition_spec.rb:6
+
+todo:
   - core/enumerable/reject_spec.rb:19
   - core/enumerable/reject_spec.rb:6
   - core/enumerable/shared/find_all.rb:10
