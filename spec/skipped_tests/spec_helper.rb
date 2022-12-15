@@ -99,6 +99,43 @@ class YieldsMulti
   end
 end
 
+class MapReturnsEnumerable
+  include Grizzly::Enumerable
+  attr_accessor :list
+  def initialize(list = (1..9).to_a)
+    @list = list
+  end
+
+  def ==(other)
+    list == other.list
+  end
+
+  class EnumerableMapping
+    include Grizzly::Enumerable
+
+    def initialize(items, block)
+      @items = items
+      @block = block
+    end
+
+    def each
+      @items.each do |i|
+        yield @block.call(i)
+      end
+    end
+  end
+
+  def each
+    yield 1
+    yield 2
+    yield 3
+  end
+
+  def map(&block)
+    EnumerableMapping.new(self, block)
+  end
+end
+
 class ReverseComparable
   include Comparable
   def initialize(num)

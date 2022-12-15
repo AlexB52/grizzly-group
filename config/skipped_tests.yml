@@ -72,12 +72,12 @@ tests:
   - core/enumerable/shared/take.rb:36
   - core/enumerable/shared/take.rb:50
   - core/enumerable/shared/take.rb:55
-
-todo:
+  - core/enumerable/sort_by_spec.rb:6
   - core/enumerable/sort_by_spec.rb:25
   - core/enumerable/sort_by_spec.rb:30
   - core/enumerable/sort_by_spec.rb:35
-  - core/enumerable/sort_by_spec.rb:6
+
+todo:
   - core/enumerable/sort_spec.rb:11
   - core/enumerable/sort_spec.rb:22
   - core/enumerable/sort_spec.rb:31
