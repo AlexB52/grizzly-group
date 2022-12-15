@@ -64,8 +64,7 @@ tests:
   - core/enumerable/reject_spec.rb:6
   - core/enumerable/shared/find_all.rb:10
   - core/enumerable/shared/find_all.rb:25
-
-todo:
+  - core/enumerable/shared/take.rb:7
   - core/enumerable/shared/take.rb:12
   - core/enumerable/shared/take.rb:19
   - core/enumerable/shared/take.rb:23
@@ -73,7 +72,8 @@ todo:
   - core/enumerable/shared/take.rb:36
   - core/enumerable/shared/take.rb:50
   - core/enumerable/shared/take.rb:55
-  - core/enumerable/shared/take.rb:7
+
+todo:
   - core/enumerable/sort_by_spec.rb:25
   - core/enumerable/sort_by_spec.rb:30
   - core/enumerable/sort_by_spec.rb:35
