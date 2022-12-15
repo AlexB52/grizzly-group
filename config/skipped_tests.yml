@@ -82,10 +82,10 @@ tests:
   - core/enumerable/sort_spec.rb:31
   - core/enumerable/sort_spec.rb:46
   - core/enumerable/sort_spec.rb:51
+  - core/enumerable/zip_spec.rb:6
+  - core/enumerable/zip_spec.rb:36
 
 todo:
-  - core/enumerable/zip_spec.rb:36
-  - core/enumerable/zip_spec.rb:6
   - shared/enumerable/minmax.rb:12
   - shared/enumerable/minmax.rb:2
   - shared/enumerable/minmax.rb:7
