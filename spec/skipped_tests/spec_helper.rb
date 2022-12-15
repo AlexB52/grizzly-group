@@ -149,3 +149,55 @@ class ReverseComparable
     other.num <=> @num
   end
 end
+
+class Freezy
+  include Grizzly::Enumerable
+
+  attr_accessor :list
+  def initialize(list = [])
+    @list = list
+  end
+
+  def ==(other)
+    list == other.list
+  end
+
+  def each
+    yield 1
+    yield 2
+  end
+
+  def to_a
+    super.freeze
+  end
+end
+
+class ComparesByVowelCount
+
+  attr_accessor :value, :vowels
+
+  def self.wrap(*args)
+    args.map {|element| ComparesByVowelCount.new(element)}
+  end
+
+  def initialize(string)
+    self.value = string
+    self.vowels = string.gsub(/[^aeiou]/, '').size
+  end
+
+  def <=>(other)
+    self.vowels <=> other.vowels
+  end
+
+end
+
+class ComparableWithInteger
+  include Comparable
+  def initialize(num)
+    @num = num
+  end
+
+  def <=>(fixnum)
+    @num <=> fixnum
+  end
+end

@@ -76,14 +76,14 @@ tests:
   - core/enumerable/sort_by_spec.rb:25
   - core/enumerable/sort_by_spec.rb:30
   - core/enumerable/sort_by_spec.rb:35
-
-todo:
+  - core/enumerable/sort_spec.rb:5
   - core/enumerable/sort_spec.rb:11
   - core/enumerable/sort_spec.rb:22
   - core/enumerable/sort_spec.rb:31
   - core/enumerable/sort_spec.rb:46
-  - core/enumerable/sort_spec.rb:5
   - core/enumerable/sort_spec.rb:51
+
+todo:
   - core/enumerable/zip_spec.rb:36
   - core/enumerable/zip_spec.rb:6
   - shared/enumerable/minmax.rb:12
