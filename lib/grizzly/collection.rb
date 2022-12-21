@@ -2,6 +2,14 @@ module Grizzly
   class Collection < Array
     include Grizzly::Enumerable
 
+    def collect(*args)
+      subgroup(super)
+    end
+
+    def map(*args)
+      subgroup(super)
+    end
+
     def transpose(*args)
       result = super
       if self.all? { |collection| collection.is_a?(self.class) }
