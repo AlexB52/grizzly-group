@@ -1,5 +1,7 @@
 module Grizzly
   module Enumerable
+    include ::Enumerable
+
     def zip(*other_arrays)
       result = super
       return result unless result.is_a?(Array)
