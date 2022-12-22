@@ -1,6 +1,6 @@
-require "grizzly"
+require_relative "../lib/grizzly"
 
-Group = Grizzly::Collection
+class MyCollection < Grizzly::Collection; end
 
 # Running directly with ruby some_spec.rb
 unless ENV['MSPEC_RUNNER']

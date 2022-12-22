@@ -9,6 +9,8 @@ tests:
   - core/array/flatten_spec.rb:79
   - core/array/flatten_spec.rb:89
   - core/array/last_spec.rb:70
+  - core/array/max_spec.rb:4
+  - core/array/min_spec.rb:4
   - core/array/multiply_spec.rb:88
   - core/array/pack/buffer_spec.rb:26
   - core/array/partition_spec.rb:37

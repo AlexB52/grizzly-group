@@ -16,13 +16,16 @@ Other libraries that provide something similar: [Dry::Monads::List](https://dry-
 require "grizzly"
 
 Mark = Struct.new(:score)
+
 class MarkCollection < Grizzly::Collection
   def average_score
     sum(&:score) / size.to_f
   end
 end
 
-marks = MarkCollection.new (0..100).to_a.map { |i| Mark.new(i) }
+marks_array = (0..100).to_a.map { |i| Mark.new(i) }
+
+marks = MarkCollection.new(marks_array)
 
 marks.select { |mark| mark.score.even? }.
       average_score
@@ -43,7 +46,6 @@ Ruby 2.7+
 ## Roadmap
 
 - [X] MVP: Array methods
-- [ ] MVP: Enumerable methods
 - [ ] [Enumerators](https://github.com/AlexB52/grizzly-rb/issues/1)
 - [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
 

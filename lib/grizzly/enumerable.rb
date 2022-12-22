@@ -41,6 +41,14 @@ module Grizzly
       end
     end
 
+    def max(*args)
+      subgroup(super)
+    end
+
+    def min(*args)
+      subgroup(super)
+    end
+
     def minmax_by(*args)
       subgroup(super)
     end
