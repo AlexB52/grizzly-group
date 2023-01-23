@@ -49,7 +49,7 @@ tests:
   - core/array/transpose_spec.rb:47
   - core/array/union_spec.rb:17
   - core/array/uniq_spec.rb:94
-  - core/array/values_at_spec.rb:60
+  - core/array/values_at_spec.rb:61
   - core/array/zip_spec.rb:62
 
 todo:
