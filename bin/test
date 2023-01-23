@@ -12,10 +12,24 @@ RETURN2=$?
 echo
 echo
 
-mspec/bin/mspec spec/skipped_tests/core/array/
+mspec/bin/mspec ruby-spec/core/enumerator
 RETURN3=$?
 
-RETURN=$(($RETURN1 + $RETURN2 + RETURN3))
+echo
+echo
+
+mspec/bin/mspec spec/grizzly/group/enumerator
+RETURN4=$?
+
+echo
+echo
+
+mspec/bin/mspec spec/skipped_tests/core/array/
+RETURN5=$?
+
+RETURN=$(($RETURN1 + $RETURN2 + $RETURN3 + $RETURN4 + $RETURN5))
+
+echo $RETURN
 
 if [ $RETURN -gt "0" ]; then
 echo "Tests failed"
