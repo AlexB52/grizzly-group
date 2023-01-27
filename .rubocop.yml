@@ -17,3 +17,7 @@ Style/GrepImplementation:
 Style/InstanceOfArray:
   Enabled: true
   NewInstanceOf: Grizzly::Collection
+
+Style/EnumeratorInitialization:
+  Enabled: true
+  InitializeEnumeratorWith: Grizzly::Enumerator

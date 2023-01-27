@@ -1,14 +1,16 @@
 require 'forwardable'
 
 module Grizzly
-  class Enumerator < Enumerator
+  class Enumerator
+    extend Forwardable
     include ::Grizzly::Enumerable
 
-    # def_delegators :@enum, *%i{
-    #   + first feed to_a
-    #   next next_values
-    #   peek peek_values
-    # }
+    def_delegators :@enum, *%i{
+      + first feed to_a
+      next next_values
+      peek peek_values
+      size
+    }
 
     attr_reader :enum, :instantiating_class
     def initialize(enum, instantiating_class: Array)
@@ -16,29 +18,31 @@ module Grizzly
       @instantiating_class = instantiating_class
     end
 
-    def size
-      @enum.size
-    end
-
     def each(*args, &block)
-      # unless block_given?
-      #   return args.any? ? new_enumerator(enum, __method__, *args) : self
-      # end
+      return self if args.empty? && !block_given?
+
+      unless block_given?
+        return new_enumerator(enum.each(*args))
+      end
 
       enum.each(*args, &block)
     end
 
-    # def with_index(offset = 0, &block)
-    #   unless block_given?
-    #     return new_enumerator(self, __method__, offset)
-    #   end
+    def with_index(offset = 0, &block)
+      unless block_given?
+        return new_enumerator(@enum.with_index(offset))
+      end
 
-    #   enum.with_index(offset, &block)
-    # end
+      enum.with_index(offset, &block)
+    end
 
-    # def each_with_index(&block)
-    #   with_index(&block)
-    # end
+    def each_with_index(&block)
+      with_index(&block)
+    end
+
+    def rewind
+      enum.rewind && self
+    end
 
     # def with_object(object, &block)
     #   unless block_given?
@@ -51,10 +55,6 @@ module Grizzly
 
     # def inspect
     #   enum.inspect.gsub('Enumerator', self.class.to_s)
-    # end
-
-    # def rewind
-    #   enum.rewind && self
     # end
   end
 end
