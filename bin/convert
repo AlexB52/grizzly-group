@@ -9,7 +9,7 @@ require_relative "../conversion/lib/cops"
 # with your gem easier. You can also use a different console, if you like.
 
 if ARGV[1]
-  `rubocop --only Style/ArrayInitialization -c .rubocop.yml -a #{ARGV[0]}`
+  `rubocop --only Style/ArrayInitialization,Style/GrepImplementation -c .rubocop.yml -a #{ARGV[0]}`
 else
-  `rubocop --only Style/ArrayInitialization -c .rubocop.yml #{ARGV[0]}`
+  `rubocop --only Style/ArrayInitialization,Style/GrepImplementation -c .rubocop.yml #{ARGV[0]}`
 end

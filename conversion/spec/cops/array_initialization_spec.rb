@@ -10,6 +10,39 @@ module RuboCop
           cop_config['InitializeArrayWith'] = 'AnotherClass'
         end
 
+        it 'registers an offense for @origin = [true, false]' do
+          expect_offense(<<~RUBY)
+            @origin = [true, false]
+                      ^^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+          RUBY
+
+          expect_correction(<<~RUBY)
+            @origin = AnotherClass.new([true, false])
+          RUBY
+        end
+
+        it 'registers an offense when using #to_a constructor' do
+          expect_offense(<<~RUBY)
+            a = (1..3).to_a
+                ^^^^^^^^^^^ an Array should not be initialized with #to_a
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new((1..3).to_a)
+          RUBY
+        end
+
+        it 'registers an offense when using #to_a constructor on a chained method' do
+          expect_offense(<<~RUBY)
+            a = @array.combination(3).to_a
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^ an Array should not be initialized with #to_a
+          RUBY
+
+          expect_correction(<<~RUBY)
+            a = AnotherClass.new(@array.combination(3).to_a)
+          RUBY
+        end
+
         it 'registers an offense when using [] literal constructor' do
           expect_offense(<<~RUBY)
             a = [1,2,3]
