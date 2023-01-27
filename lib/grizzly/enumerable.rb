@@ -2,6 +2,14 @@ module Grizzly
   module Enumerable
     include ::Enumerable
 
+    def grep(*args)
+      raise NotImplementedError, "#{__method__} can't be supported. See https://bugs.ruby-lang.org/issues/11808"
+    end
+
+    def grep_v(*args)
+      raise NotImplementedError, "#{__method__} can't be supported. See https://bugs.ruby-lang.org/issues/11808"
+    end
+
     def zip(*other_arrays)
       result = super
       return result unless result.is_a?(Array)
@@ -73,11 +81,23 @@ module Grizzly
       subgroup(super)
     end
 
+    def reject!(*args)
+      subgroup(super)
+    end
+
     def filter(*args)
       subgroup(super)
     end
 
+    def filter!(*args)
+      subgroup(super)
+    end
+
     def select(*args)
+      subgroup(super)
+    end
+
+    def select!(*args)
       subgroup(super)
     end
 
@@ -91,14 +111,23 @@ module Grizzly
     private
 
     def subgroup(result)
-      return result unless result.is_a?(Array)
       return result if is_self?(result)
+      return new_enumerator(result) if result.is_a?(::Enumerator)
+      return result unless result.is_a?(Array)
 
       new_collection(result)
     end
 
+    def instantiating_class
+      self.class
+    end
+
     def new_collection(array)
-      self.class.new(array)
+      instantiating_class.new(array)
+    end
+
+    def new_enumerator(enum)
+      Grizzly::Enumerator.new(enum, instantiating_class: instantiating_class)
     end
 
     def is_self?(obj)

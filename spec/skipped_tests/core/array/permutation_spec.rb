@@ -12,7 +12,7 @@ describe "Array#permutation" do
 
   it "returns an Enumerator of all permutations when called without a block or arguments" do
     enum = @numbers.permutation
-    enum.should be_an_instance_of(Enumerator)
+    enum.should be_an_instance_of(Grizzly::Enumerator)
     enum.to_a.sort.should == [
       Grizzly::Collection.new([1, 2, 3]),Grizzly::Collection.new([1, 3, 2]),Grizzly::Collection.new([2, 1, 3]),Grizzly::Collection.new([2, 3, 1]),Grizzly::Collection.new([3, 1, 2]),Grizzly::Collection.new([3, 2, 1])
     ].sort
@@ -20,7 +20,7 @@ describe "Array#permutation" do
 
   it "returns an Enumerator of permutations of given length when called with an argument but no block" do
     enum = @numbers.permutation(1)
-    enum.should be_an_instance_of(Enumerator)
+    enum.should be_an_instance_of(Grizzly::Enumerator)
     enum.to_a.sort.should == [Grizzly::Collection.new([1]),Grizzly::Collection.new([2]),Grizzly::Collection.new([3])]
   end
 

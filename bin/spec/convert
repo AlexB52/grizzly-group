@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
+# Array gsub
 bin/convert ruby-spec/core/array true
-bin/convert ruby-spec/core/enumerable true
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyCollectionArray/g" {} \;
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Array)/be_an_instance_of(Grizzly::Collection)/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
+
+# Enumerable gsub
+bin/convert ruby-spec/core/enumerable true
+
+# Enumerator
+# find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/Enumerator.new/Grizzly::Enumerator.new/g" {} \;
