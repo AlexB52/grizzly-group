@@ -10,6 +10,14 @@ Style/ArrayInitialization:
   Enabled: true
   InitializeArrayWith: Grizzly::Collection
 
+Style/GrepImplementation:
+  Enabled: true
+  GrepSupportRubyVersion: 5.0
+
 Style/InstanceOfArray:
   Enabled: true
   NewInstanceOf: Grizzly::Collection
+
+Style/EnumeratorInitialization:
+  Enabled: true
+  InitializeEnumeratorWith: Grizzly::Enumerator

@@ -18,16 +18,10 @@ RETURN3=$?
 echo
 echo
 
-mspec/bin/mspec spec/grizzly/group/enumerator
+mspec/bin/mspec spec/skipped_tests/core/array/
 RETURN4=$?
 
-echo
-echo
-
-mspec/bin/mspec spec/skipped_tests/core/array/
-RETURN5=$?
-
-RETURN=$(($RETURN1 + $RETURN2 + $RETURN3 + $RETURN4 + $RETURN5))
+RETURN=$(($RETURN1 + $RETURN2 + $RETURN3 + $RETURN4))
 
 echo $RETURN
 

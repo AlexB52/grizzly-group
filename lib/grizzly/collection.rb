@@ -2,11 +2,27 @@ module Grizzly
   class Collection < Array
     include Grizzly::Enumerable
 
+    def each(*args)
+      subgroup(super)
+    end
+
     def collect(*args)
       subgroup(super)
     end
 
+    def collect!(*args)
+      subgroup(super)
+    end
+
     def map(*args)
+      subgroup(super)
+    end
+
+    def map!(*args)
+      subgroup(super)
+    end
+
+    def sort_by!(*args)
       subgroup(super)
     end
 
@@ -140,6 +156,60 @@ module Grizzly
 
     def uniq(*args)
       new_collection(super)
+    end
+
+    # Enumerator specific methods
+
+    def bsearch_index(*args)
+      subgroup(super)
+    end
+
+    def bsearch(*args)
+      subgroup(super)
+    end
+
+    def combination(*args)
+      subgroup(super)
+    end
+
+    def delete_if(*args)
+      subgroup(super)
+    end
+
+    def each_index(*args)
+      subgroup(super)
+    end
+
+    def keep_if(*args)
+      subgroup(super)
+    end
+
+    def find_index(*args)
+      subgroup(super)
+    end
+
+    def index(*args)
+      subgroup(super)
+    end
+
+    def permutation(*args)
+      subgroup(super)
+    end
+
+    def repeated_combination(*args)
+      subgroup(super)
+    end
+
+    def repeated_permutation(*args)
+      subgroup(super)
+    end
+
+    def reverse_each(*args)
+      subgroup(super)
+    end
+
+    def rindex(*args)
+      subgroup(super)
     end
   end
 end
