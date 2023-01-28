@@ -16,6 +16,7 @@ find ruby-spec/core/enumerable -type f -name "*.rb" -exec sed -i.bak "s/be_an_in
 bin/convert ruby-spec/core/enumerator 'Style/EnumeratorInitialization' 'autocorrect'
 find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/\[1,2,3\].select/Grizzly::Enumerator.new([1,2,3].select)/g" {} \;
+find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/1.upto(3)/Grizzly::Enumerator.new(1.upto(3))/g" {} \;
 
 find ruby-spec/shared/enumerator -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 bin/convert ruby-spec/shared/enumerator 'Style/EnumeratorInitialization' 'autocorrect'
