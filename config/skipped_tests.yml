@@ -1,60 +1,19 @@
 tests:
-  - core/array/allocate_spec.rb:4
-  - core/array/compact_spec.rb:21
-  - core/array/difference_spec.rb:14
-  - core/array/drop_spec.rb:60
-  - core/array/drop_while_spec.rb:24
-  - core/array/first_spec.rb:76
-  - core/array/flatten_spec.rb:248
-  - core/array/flatten_spec.rb:79
-  - core/array/flatten_spec.rb:89
-  - core/array/last_spec.rb:70
-  - core/array/max_spec.rb:4
-  - core/array/min_spec.rb:4
-  - core/array/multiply_spec.rb:88
-  - core/array/pack/buffer_spec.rb:26
-  - core/array/partition_spec.rb:37
-  - core/array/permutation_spec.rb:26
-  - core/array/permutation_spec.rb:35
-  - core/array/plus_spec.rb:34
-  - core/array/pop_spec.rb:115
-  - core/array/reject_spec.rb:36
-  - core/array/reverse_spec.rb:18
-  - core/array/rotate_spec.rb:63
-  - core/array/sample_spec.rb:69
-  - core/array/shared/collect.rb:11
-  - core/array/shared/difference.rb:33
-  - core/array/shared/intersection.rb:67
-  - core/array/shared/select.rb:19
-  - core/array/shared/slice.rb:427
-  - core/array/shared/slice.rb:431
-  - core/array/shared/slice.rb:435
-  - core/array/shared/slice.rb:439
-  - core/array/shared/slice.rb:443
-  - core/array/shared/slice.rb:447
-  - core/array/shared/union.rb:62
-  - core/array/shift_spec.rb:116
-  - core/array/shuffle_spec.rb:24
-  - core/array/slice_spec.rb:217
-  - core/array/slice_spec.rb:221
-  - core/array/slice_spec.rb:225
-  - core/array/slice_spec.rb:229
-  - core/array/slice_spec.rb:233
-  - core/array/slice_spec.rb:237
-  - core/array/sort_spec.rb:167
-  - core/array/take_spec.rb:36
-  - core/array/take_while_spec.rb:24
-  - core/array/to_a_spec.rb:11
-  - core/array/to_a_spec.rb:5
-  - core/array/transpose_spec.rb:47
-  - core/array/union_spec.rb:17
-  - core/array/uniq_spec.rb:94
-  - core/array/values_at_spec.rb:61
-  - core/array/zip_spec.rb:62
   # Enumerator
   - core/enumerator/initialize_spec.rb:27
+  # Array
+  - core/array/allocate_spec.rb:4
+  - core/array/flatten_spec.rb:79
+  - core/array/flatten_spec.rb:89
+  - core/array/flatten_spec.rb:248
+  - core/array/pack/buffer_spec.rb:26
+  - core/array/partition_spec.rb:37
+  - core/array/to_a_spec.rb:5
+  - core/array/to_a_spec.rb:11
+  - core/array/zip_spec.rb:62
 
 todo:
+
 
 unskipped_enumerables:
   - core/enumerable/group_by_spec.rb:28
@@ -95,3 +54,50 @@ unskipped_enumerables:
   - shared/enumerable/minmax.rb:2
   - shared/enumerable/minmax.rb:7
   - shared/enumerable/minmax.rb:12
+
+unskipped_array:
+  - core/array/compact_spec.rb:21
+  - core/array/difference_spec.rb:14
+  - core/array/drop_spec.rb:60
+  - core/array/drop_while_spec.rb:24
+  - core/array/first_spec.rb:76
+  - core/array/flatten_spec.rb:79
+  - core/array/last_spec.rb:70
+  - core/array/max_spec.rb:4
+  - core/array/min_spec.rb:4
+  - core/array/multiply_spec.rb:88
+  - core/array/permutation_spec.rb:26
+  - core/array/permutation_spec.rb:35
+  - core/array/plus_spec.rb:34
+  - core/array/pop_spec.rb:115
+  - core/array/reject_spec.rb:36
+  - core/array/reverse_spec.rb:18
+  - core/array/rotate_spec.rb:63
+  - core/array/sample_spec.rb:69
+  - core/array/shared/collect.rb:11
+  - core/array/shared/difference.rb:33
+  - core/array/shared/intersection.rb:67
+  - core/array/shared/select.rb:19
+  - core/array/shared/slice.rb:427
+  - core/array/shared/slice.rb:431
+  - core/array/shared/slice.rb:435
+  - core/array/shared/slice.rb:439
+  - core/array/shared/slice.rb:443
+  - core/array/shared/slice.rb:447
+  - core/array/shared/union.rb:62
+  - core/array/shift_spec.rb:116
+  - core/array/shuffle_spec.rb:24
+  - core/array/slice_spec.rb:217
+  - core/array/slice_spec.rb:221
+  - core/array/slice_spec.rb:225
+  - core/array/slice_spec.rb:229
+  - core/array/slice_spec.rb:233
+  - core/array/slice_spec.rb:237
+  - core/array/sort_spec.rb:167
+  - core/array/take_spec.rb:36
+  - core/array/take_while_spec.rb:24
+  - core/array/transpose_spec.rb:47
+  - core/array/union_spec.rb:17
+  - core/array/uniq_spec.rb:94
+  - core/array/values_at_spec.rb:61
+

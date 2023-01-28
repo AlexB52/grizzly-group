@@ -2,12 +2,15 @@
 
 # Array gsub
 bin/convert ruby-spec/core/array 'Style/ArrayInitialization' 'autocorrect'
-find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyCollectionArray/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/Grizzly::Collection/g" {} \;
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Array)/be_an_instance_of(Grizzly::Collection)/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/should equal Array/should equal Grizzly::Collection/g" {} \;
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 
 # Enumerable gsub
 bin/convert ruby-spec/core/enumerable 'Style/ArrayInitialization,Style/GrepImplementation' 'autocorrect'
+find ruby-spec/core/enumerable/fixtures/classes.rb -type f -name "*.rb" -exec sed -i.bak "s/include Enumerable/include Grizzly::Enumerable\\ndef instantiating_class\\nGrizzly::Collection\\nend/g" {} \;
+find ruby-spec/core/enumerable -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 
 # Enumerator
 bin/convert ruby-spec/core/enumerator 'Style/EnumeratorInitialization' 'autocorrect'
