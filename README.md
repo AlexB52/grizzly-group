@@ -62,7 +62,7 @@ This library initialize a new collection everytime the Array method returns.
 
 Chaining methods with Grizzly::Collection is:
   * really expensive for list with a small number of items. <= 10
-  * less of a problem with lists with over 100 items.
+  * less of a problem with lists over 100 items.
 
 ### Raw Results
 ```
