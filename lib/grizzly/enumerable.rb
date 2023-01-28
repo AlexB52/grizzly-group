@@ -124,6 +124,10 @@ module Grizzly
 
     # Enumerator related
 
+    def to_enum(*args)
+      new_enumerator(super)
+    end
+
     def take_while(*args)
       subgroup(super)
     end
