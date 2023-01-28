@@ -41,10 +41,13 @@ marks.select { |mark| mark.score.even? }.
 
 ### Gotchas
 
-* `#grep` and `#grep_v` methods are not supported: See issue https://github.com/AlexB52/grizzly-rb/issues/8
+I tried to make `Grizzly::Collection` methods return what would be expected. 
+That said there are some methods with special behaviour.
+
 * `#map` returns an instance of the subclass and not an array
 * `#to_a` returns an array
-* `#transpose`, `#product`, `#zip`, `#partition`, `#group_by`: check their implementation as they return subgroups
+* `#transpose`, `#product`, `#zip`, `#partition`, `#group_by`: check their implementation and specs as they return subgroups
+* `#grep` and `#grep_v` methods are not supported and will raise: See issue https://github.com/AlexB52/grizzly-rb/issues/8
 
 ## Ruby support
 
