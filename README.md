@@ -39,6 +39,13 @@ marks.select { |mark| mark.score.even? }.
 # => 91.0
 ```
 
+### Gotchas
+
+* `#grep` and `#grep_v` methods are not supported: See issue https://github.com/AlexB52/grizzly-rb/issues/8
+* `#map` returns an instance of the subclass and not an array
+* `#to_a` returns an array
+* `#transpose`, `#product`, `#zip`, `#partition`, `#group_by`: check their implementation as they return subgroups
+
 ## Ruby support
 
 Ruby 2.7+
