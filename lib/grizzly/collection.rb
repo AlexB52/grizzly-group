@@ -147,10 +147,6 @@ module Grizzly
       subgroup(super)
     end
 
-    def uniq(*args)
-      new_collection(super)
-    end
-
     # Enumerator specific methods
 
     def bsearch_index(*args)

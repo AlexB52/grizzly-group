@@ -20,3 +20,6 @@ find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/1.upto(3
 
 find ruby-spec/shared/enumerator -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 bin/convert ruby-spec/shared/enumerator 'Style/EnumeratorInitialization' 'autocorrect'
+
+# Lazy Enumerator
+find ruby-spec/core/enumerator -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator::Lazy)/be_an_instance_of(Grizzly::LazyEnumerator)/g" {} \;
