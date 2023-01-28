@@ -12,6 +12,8 @@ Other libraries that provide something similar: [Dry::Monads::List](https://dry-
 
 ## Usage
 
+For an extensive use of the library you can see this [file](examples/transactions.rb)
+
 ```ruby
 require "grizzly"
 
@@ -23,9 +25,7 @@ class MarkCollection < Grizzly::Collection
   end
 end
 
-marks_array = (0..100).to_a.map { |i| Mark.new(i) }
-
-marks = MarkCollection.new(marks_array)
+marks = MarkCollection.new (0..100).to_a.map { |i| Mark.new(i) }
 
 marks.select { |mark| mark.score.even? }.
       average_score
@@ -39,22 +39,33 @@ marks.select { |mark| mark.score.even? }.
 # => 91.0
 ```
 
+### Gotchas
+
+I tried to make `Grizzly::Collection` methods return what would be expected. 
+That said there are some methods with special behaviour.
+
+* `#map` returns an instance of the subclass and not an array
+* `#to_a` returns an array
+* `#transpose`, `#product`, `#zip`, `#partition`, `#group_by`: check their implementation and specs as they return subgroups
+* `#grep` and `#grep_v` methods are not supported and will raise: See issue https://github.com/AlexB52/grizzly-rb/issues/8
+
 ## Ruby support
 
 Ruby 2.7+
 
 ## Roadmap
 
-- [X] MVP: Array methods
-- [X] MPV: Enumerators methods
+- [X] Array
+- [X] Enumerable
+- [X] Enumerator
+- [X] Lazy Enumerator
 - [X] Benchmarks
-- [X] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
 
 ## Benchmark
 
 You can run the benchmark with `ruby benchmark.rb`
 
-The benchmark runs over increments of list with 10n+1 items for a total of 5_000_000 iterations.
+The benchmark runs over increments of list with 10\*\*n items for a total of 5_000_000 iterations.
 
 ### Conclusions
 
@@ -62,7 +73,9 @@ This library initialize a new collection everytime the Array method returns.
 
 Chaining methods with Grizzly::Collection is:
   * really expensive for list with a small number of items. <= 10
-  * less of a problem with lists over 100 items.
+  * less of a problem with lists over 100 items
+ 
+TBC: Looks like a Grizzly::Collection method is twice as expensive as an Array method (depending on the method).
 
 ### Raw Results
 ```
