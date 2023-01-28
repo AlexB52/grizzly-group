@@ -1,4 +1,5 @@
 require_relative "../lib/grizzly"
+require "byebug"
 
 class MyCollection < Grizzly::Collection; end
 
