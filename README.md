@@ -58,7 +58,7 @@ Ruby 2.7+
 - [X] MVP: Array methods
 - [X] MPV: Enumerators methods
 - [X] Benchmarks
-- [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
+- [X] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
 
 ## Benchmark
 
