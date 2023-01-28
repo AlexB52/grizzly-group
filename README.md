@@ -54,7 +54,7 @@ Ruby 2.7+
 
 You can run the benchmark with `ruby benchmark.rb`
 
-The benchmark runs over increments of list with 10n+1 items for a total of 5_000_000 iterations.
+The benchmark runs over increments of list with 10**n items for a total of 5_000_000 iterations.
 
 ### Conclusions
 
@@ -64,7 +64,7 @@ Chaining methods with Grizzly::Collection is:
   * really expensive for list with a small number of items. <= 10
   * less of a problem with lists over 100 items
  
-It seems to me that a Grizzly::Collection method is twice as expensive as Array.
+TBC: Looks like a Grizzly::Collection method is twice as expensive as an Array method (depending on the method).
 
 ### Raw Results
 ```
