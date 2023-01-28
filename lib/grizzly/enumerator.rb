@@ -56,8 +56,8 @@ module Grizzly
       with_object(object, &block)
     end
 
-    # def inspect
-    #   enum.inspect.gsub('Enumerator', self.class.to_s)
-    # end
+    def inspect
+      enum.inspect.gsub(/(?<!Grizzly::)Enumerator/, self.class.to_s)
+    end
   end
 end
