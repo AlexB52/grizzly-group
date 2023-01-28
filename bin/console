@@ -11,10 +11,7 @@ require "byebug"
 class MyCollection < Grizzly::Collection;end
 
 def setup
-  a = MyCollection.new (0..10).to_a
-  e = Grizzly::Enumerator.new(a.select)
-
-  [a, e]
+  MyCollection.new (0..100).to_a
 end
 
 # (If you use this, don't forget to add pry to your Gemfile!)
