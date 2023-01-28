@@ -204,6 +204,17 @@ module Grizzly
       subgroup(super)
     end
 
+    # Lazy related methods
+
+    def lazy
+      new_lazy_enumerator(super)
+    end
+
+
+    def uniq(*args)
+      subgroup(super)
+    end
+
     private
 
     def subgroup(result)
@@ -224,6 +235,10 @@ module Grizzly
 
     def new_enumerator(enum)
       Grizzly::Enumerator.new(enum, instantiating_class: instantiating_class)
+    end
+
+    def new_lazy_enumerator(lazy)
+      Grizzly::LazyEnumerator.new(lazy, instantiating_class: instantiating_class)
     end
 
     def is_self?(obj)
