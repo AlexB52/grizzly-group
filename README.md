@@ -47,7 +47,7 @@ Ruby 2.7+
 
 - [X] MVP: Array methods
 - [X] MPV: Enumerators methods
-- [ ] Benchmarks
+- [X] Benchmarks
 - [ ] [Lazy Enumerators](https://github.com/AlexB52/grizzly-rb/issues/2)
 
 ## Benchmark
@@ -62,7 +62,9 @@ This library initialize a new collection everytime the Array method returns.
 
 Chaining methods with Grizzly::Collection is:
   * really expensive for list with a small number of items. <= 10
-  * less of a problem with lists over 100 items.
+  * less of a problem with lists over 100 items
+ 
+It seems to me that a Grizzly::Collection method is twice as expensive as Array.
 
 ### Raw Results
 ```
