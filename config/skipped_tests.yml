@@ -1,6 +1,7 @@
 tests:
   # Enumerator
   - core/enumerator/initialize_spec.rb:27
+  - shared/enumerator/enum_for.rb:6
   # Array
   - core/array/allocate_spec.rb:4
   - core/array/flatten_spec.rb:79
