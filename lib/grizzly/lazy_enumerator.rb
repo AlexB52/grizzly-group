@@ -31,6 +31,15 @@ module Grizzly
       uniq
       with_index
       zip
+      each_with_index
+      with_index
+      cycle
+      each_with_object
+      with_object
+      each_slice
+      each_entry
+      each_cons
+      each
     ].each do |method_name|
       define_method(method_name) do |*args, &block|
         subgroup @obj.send(method_name, *args, &block)
@@ -46,10 +55,6 @@ module Grizzly
     def subgroup(result)
       return new_lazy_enumerator(result) if result.is_a?(::Enumerator::Lazy)
       super
-    end
-
-    def each(*args, &block)
-      @obj.each(*args, &block)
     end
 
     def lazy
