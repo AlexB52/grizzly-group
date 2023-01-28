@@ -25,6 +25,10 @@ module Grizzly
       @obj.size
     end
 
+    def to_a(*args, &block)
+      @obj.to_a(*args, &block) # no subgroup?
+    end
+
     # Lazy override
 
     def select(*args, &block)
@@ -121,10 +125,6 @@ module Grizzly
 
     def take_while(*args, &block)
       subgroup @obj.take_while(*args, &block)
-    end
-
-    def to_a(*args, &block)
-      subgroup @obj.to_a(*args, &block)
     end
 
     def to_enum(*args, &block)
