@@ -2,8 +2,9 @@
 
 # Array gsub
 bin/convert ruby-spec/core/array 'Style/ArrayInitialization' 'autocorrect'
-find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/MyCollectionArray/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/ArraySpecs::MyArray/Grizzly::Collection/g" {} \;
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Array)/be_an_instance_of(Grizzly::Collection)/g" {} \;
+find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/should equal Array/should equal Grizzly::Collection/g" {} \;
 find ruby-spec/core/array -type f -name "*.rb" -exec sed -i.bak "s/be_an_instance_of(Enumerator)/be_an_instance_of(Grizzly::Enumerator)/g" {} \;
 
 # Enumerable gsub

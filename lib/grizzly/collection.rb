@@ -1,3 +1,4 @@
+
 module Grizzly
   class Collection < Array
     include Grizzly::Enumerable
@@ -201,6 +202,14 @@ module Grizzly
     end
 
     def rindex(*args)
+      subgroup(super)
+    end
+
+    def max(*args)
+      subgroup(super)
+    end
+
+    def min(*args)
       subgroup(super)
     end
   end
