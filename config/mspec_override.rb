@@ -1,5 +1,6 @@
 require "yaml"
 require "singleton"
+require "byebug"
 require_relative "../lib/grizzly"
 
 class MyCollectionArray < Grizzly::Collection; end

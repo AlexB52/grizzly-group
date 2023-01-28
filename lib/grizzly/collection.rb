@@ -6,15 +6,7 @@ module Grizzly
       subgroup(super)
     end
 
-    def collect(*args)
-      subgroup(super)
-    end
-
     def collect!(*args)
-      subgroup(super)
-    end
-
-    def map(*args)
       subgroup(super)
     end
 
