@@ -44,14 +44,17 @@ module Grizzly
       enum.rewind && self
     end
 
-    # def with_object(object, &block)
-    #   unless block_given?
-    #     return new_enumerator(self, __method__, object)
-    #   end
+    def with_object(object, &block)
+      unless block_given?
+        return new_enumerator(@enum.with_object(object))
+      end
 
-    #   enum.with_object(object, &block)
-    # end
-    # alias :each_with_object :with_object
+      enum.with_object(object, &block)
+    end
+
+    def each_with_object(object, &block)
+      with_object(object, &block)
+    end
 
     # def inspect
     #   enum.inspect.gsub('Enumerator', self.class.to_s)
