@@ -4,7 +4,7 @@
 
 The Grizzly library is an attempt to end the predominance of the Array in Ruby by providing a Collection class that returns expected results from subgrouping methods like `Array#select, Array#partition, Array#reject`, to name a few. The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. 
 
-We're testing the library against the [Ruby/Spec](https://github.com/ruby/spec) to avoid as many side effects as possible. 
+We're testing the library against the [Ruby/Spec](https://github.com/ruby/spec) and covers most of the Array methods.
 
 The library provides four classes/modules:
 
