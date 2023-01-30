@@ -4,7 +4,7 @@ gemfile do
   source 'https://rubygems.org'
   gem 'faker'
   gem 'byebug'
-  gem 'grizzly-rb', path: '.', require: 'grizzly'
+  gem 'grizzly-rb', require: 'grizzly'
 end
 
 require "bigdecimal"
