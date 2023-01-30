@@ -3,20 +3,23 @@ module Grizzly
   class Collection < Array
     include Grizzly::Enumerable
 
-    def each(*args)
-      subgroup(super)
+    %i[
+      each collect! map! sort_by! * pop shift drop_while take_while bsearch_index
+      bsearch combination delete_if each_index keep_if find_index index permutation
+      repeated_combination repeated_permutation reverse_each rindex max min
+    ].each do |method_name|
+      define_method(method_name) do |*args, &block|
+        subgroup super(*args, &block)
+      end
     end
 
-    def collect!(*args)
-      subgroup(super)
-    end
-
-    def map!(*args)
-      subgroup(super)
-    end
-
-    def sort_by!(*args)
-      subgroup(super)
+    %i[
+      values_at rotate compact reverse intersection & | + union - difference
+      flatten drop take
+    ].each do |method_name|
+      define_method(method_name) do |*args|
+        new_collection super(*args)
+      end
     end
 
     def transpose(*args)
@@ -33,82 +36,6 @@ module Grizzly
       return result unless result.is_a?(Array)
 
       result.map {|product| new_collection(product)}
-    end
-
-    def values_at(*args)
-      new_collection(super)
-    end
-
-    def rotate(*args)
-      new_collection(super)
-    end
-
-    def compact(*args)
-      new_collection(super)
-    end
-
-    def shuffle(*args, **kargs)
-      new_collection(super)
-    end
-
-    def reverse(*args)
-      new_collection(super)
-    end
-
-    def intersection(*args)
-      new_collection(super)
-    end
-
-    def &(*args)
-      new_collection(super)
-    end
-
-    def |(*args)
-      new_collection(super)
-    end
-
-    def +(*args)
-      new_collection(super)
-    end
-
-    def *(*args)
-      subgroup(super)
-    end
-
-    def union(*args)
-      new_collection(super)
-    end
-
-    def -(*args)
-      new_collection(super)
-    end
-
-    def difference(*args)
-      new_collection(super)
-    end
-
-    def pop(*args)
-      subgroup(super)
-    end
-
-    def shift(*args)
-      subgroup(super)
-    end
-
-    def flatten(*args)
-      new_collection(super)
-    end
-
-    def sample(*args, **karg)
-      subgroup(super)
-    end
-
-    def drop(*args)
-      new_collection(super)
-    end
-
-    def drop_while(*args)
-      subgroup(super)
     end
 
     def last(*args)
@@ -139,74 +66,12 @@ module Grizzly
       subgroup(result)
     end
 
-    def take(*args)
+    def sample(*args, **karg)
+      subgroup(super)
+    end
+
+    def shuffle(*args, **kargs)
       new_collection(super)
-    end
-
-    def take_while(*args)
-      subgroup(super)
-    end
-
-    # Enumerator specific methods
-
-    def bsearch_index(*args)
-      subgroup(super)
-    end
-
-    def bsearch(*args)
-      subgroup(super)
-    end
-
-    def combination(*args)
-      subgroup(super)
-    end
-
-    def delete_if(*args)
-      subgroup(super)
-    end
-
-    def each_index(*args)
-      subgroup(super)
-    end
-
-    def keep_if(*args)
-      subgroup(super)
-    end
-
-    def find_index(*args)
-      subgroup(super)
-    end
-
-    def index(*args)
-      subgroup(super)
-    end
-
-    def permutation(*args)
-      subgroup(super)
-    end
-
-    def repeated_combination(*args)
-      subgroup(super)
-    end
-
-    def repeated_permutation(*args)
-      subgroup(super)
-    end
-
-    def reverse_each(*args)
-      subgroup(super)
-    end
-
-    def rindex(*args)
-      subgroup(super)
-    end
-
-    def max(*args)
-      subgroup(super)
-    end
-
-    def min(*args)
-      subgroup(super)
     end
   end
 end

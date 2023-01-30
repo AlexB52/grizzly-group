@@ -2,12 +2,27 @@ module Grizzly
   module Enumerable
     include ::Enumerable
 
-    def map(*args)
-      subgroup(super)
+    %i[
+      max min minmax_by sort_by find_all filter_map reject reject! filter filter!
+      select select! take_while reverse_each min_by max_by find_index drop_while
+      chunk chunk_while each_slice each_cons each_entry each_with_index flat_map
+      collect_concat find detect uniq collect map
+    ].each do |method_name|
+      define_method(method_name) do |*args, &block|
+        subgroup super(*args, &block)
+      end
     end
 
-    def collect(*args)
-      subgroup(super)
+    %i[minmax sort].each do |method_name|
+      define_method(method_name) do |*args, &block|
+        subgroup super(*args, &block)
+      end
+    end
+
+    %i[to_enum slice_when slice_before slice_after].each do |method_name|
+      define_method(method_name) do |*args, &block|
+        new_enumerator super(*args, &block)
+      end
     end
 
     def grep(*args)
@@ -59,62 +74,6 @@ module Grizzly
       end
     end
 
-    def max(*args)
-      subgroup(super)
-    end
-
-    def min(*args)
-      subgroup(super)
-    end
-
-    def minmax_by(*args)
-      subgroup(super)
-    end
-
-    def minmax(*args)
-      new_collection(super)
-    end
-
-    def sort_by(*args)
-      subgroup(super)
-    end
-
-    def find_all(*args)
-      subgroup(super)
-    end
-
-    def filter_map(*args)
-      subgroup(super)
-    end
-
-    def sort(*args)
-      new_collection(super)
-    end
-
-    def reject(*args)
-      subgroup(super)
-    end
-
-    def reject!(*args)
-      subgroup(super)
-    end
-
-    def filter(*args)
-      subgroup(super)
-    end
-
-    def filter!(*args)
-      subgroup(super)
-    end
-
-    def select(*args)
-      subgroup(super)
-    end
-
-    def select!(*args)
-      subgroup(super)
-    end
-
     def first(*args)
       result = super
       return result if args == []
@@ -122,97 +81,10 @@ module Grizzly
       subgroup(result)
     end
 
-    # Enumerator related
-
-    def to_enum(*args)
-      new_enumerator(super)
-    end
-
-    def take_while(*args)
-      subgroup(super)
-    end
-
-    def slice_when(*args)
-      new_enumerator(super)
-    end
-
-    def slice_before(*args)
-      new_enumerator(super)
-    end
-
-    def slice_after(*args)
-      new_enumerator(super)
-    end
-
-    def reverse_each(*args)
-      subgroup(super)
-    end
-
-    def min_by(*args)
-      subgroup(super)
-    end
-
-    def max_by(*args)
-      subgroup(super)
-    end
-
-    def find_index(*args)
-      subgroup(super)
-    end
-
-    def drop_while(*args)
-      subgroup(super)
-    end
-
-    def chunk(*args)
-      subgroup(super)
-    end
-
-    def chunk_while(*args)
-      subgroup(super)
-    end
-
-    def each_slice(*args)
-      subgroup(super)
-    end
-
-    def each_cons(*args)
-      subgroup(super)
-    end
-
-    def each_entry(*args)
-      subgroup(super)
-    end
-
-    def each_with_index(*args)
-      subgroup(super)
-    end
-
-    def flat_map(*args)
-      subgroup(super)
-    end
-
-    def collect_concat(*args)
-      subgroup(super)
-    end
-
-    def find(*args)
-      subgroup(super)
-    end
-
-    def detect(*args)
-      subgroup(super)
-    end
-
     # Lazy related methods
 
     def lazy
       new_lazy_enumerator(super)
-    end
-
-
-    def uniq(*args)
-      subgroup(super)
     end
 
     private

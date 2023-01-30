@@ -3,43 +3,11 @@ module Grizzly
     include ::Grizzly::Enumerable
 
     %i[
-      select
-      chunk
-      chunk_while
-      collect
-      collect_concat
-      compact
-      drop
-      drop_while
-      eager
-      enum_for
-      filter
-      filter_map
-      find_all
-      flat_map
-      force
-      grep
-      grep_v
-      map
-      reject
-      slice_after
-      slice_before
-      slice_when
-      take
-      take_while
-      to_enum
-      uniq
-      with_index
-      zip
-      each_with_index
-      with_index
-      cycle
-      each_with_object
-      with_object
-      each_slice
-      each_entry
-      each_cons
-      each
+      select chunk chunk_while collect collect_concat compact drop drop_while
+      eager enum_for filter filter_map find_all flat_map force grep grep_v
+      map reject slice_after slice_before slice_when take take_while to_enum
+      uniq with_index zip each_with_index with_index cycle each_with_object
+      with_object each_slice each_entry each_cons each
     ].each do |method_name|
       define_method(method_name) do |*args, &block|
         subgroup @obj.send(method_name, *args, &block)
