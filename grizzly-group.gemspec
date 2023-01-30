@@ -4,9 +4,9 @@ Gem::Specification.new do |spec|
   spec.name          = "grizzly-rb"
   spec.version       = Grizzly::VERSION
   spec.authors       = ["Alexandre Barret"]
-  spec.email         = ["alex@abletech.nz"]
+  spec.email         = ["alexbarret@duck.com"]
 
-  spec.summary       = "A monadic array subclass for Ruby"
+  spec.summary       = "An Array subclass for Ruby"
   spec.homepage      = "https://github.com/AlexB52/grizzly-rb"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
