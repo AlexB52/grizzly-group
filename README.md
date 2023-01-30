@@ -1,14 +1,19 @@
-:construction: **The gem is not published and is still a work in progress.**
+:anger: **DISCLAIMER**: Reading this piece isn't for the faint of heart.
 
-# Grizzly::Collection
+# Grizzly library
 
-Grizzly::Collection is an attempt to end the predominance of the Array in Ruby by providing a Ruby monad & collection class that behaves like an array but returns a subclass instance instead of a new array.
+The Grizzly library is an attempt to end the predominance of the Array in Ruby by providing a Collection class that returns expected results from subgrouping methods like `Array#select, Array#partition, Array#reject`, to name a few. The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. 
 
-The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. This is an attempt to solve what is intuitively expected from sugrouping methods like `Array#select, Array#partition, Array#reject` to name a few.
+We're testing the library against the [Ruby/Spec](https://github.com/ruby/spec) to avoid as many side effects as possible. 
 
-The library is tested against [ruby/spec](https://github.com/ruby/spec) to avoid undesirable side effects. The Grizzly::Collection class works and is subclassed from Array, you will love to hate it. 
+The library provides four classes/modules:
 
-Other libraries that provide something similar: [Dry::Monads::List](https://dry-rb.org/gems/dry-monads/1.3/list/)
+* Grizzly::Collection (Array subclass)
+* Grizzly::Enumerable (Enumerable extension)
+* Grizzly::Enumerator (Enumerator decorator)
+* Grizzly::LazyEnumerator (Enumerator::Lazy decorator)
+
+**The Grizzly::Collection is a subclass of Array that works; you will love to hate it.**
 
 ## Usage
 
@@ -41,11 +46,10 @@ marks.select { |mark| mark.score.even? }.
 
 ### Gotchas
 
-I tried to make `Grizzly::Collection` methods return what would be expected. 
-That said there are some methods with special behaviour.
+`Grizzly::Collection` methods try their best to return what you would expect. That said there are some methods with special behaviour.
 
-* `#map` returns an instance of the subclass and not an array
-* `#to_a` returns an array
+* `#map` returns an instance of the subclass and not an Array.
+* `#to_a` returns an Array
 * `#transpose`, `#product`, `#zip`, `#partition`, `#group_by`: check their implementation and specs as they return subgroups
 * `#grep` and `#grep_v` methods are not supported and will raise: See issue https://github.com/AlexB52/grizzly-rb/issues/8
 
@@ -74,8 +78,6 @@ This library initialize a new collection everytime the Array method returns.
 Chaining methods with Grizzly::Collection is:
   * really expensive for list with a small number of items. <= 10
   * less of a problem with lists over 100 items
- 
-TBC: Looks like a Grizzly::Collection method is twice as expensive as an Array method (depending on the method).
 
 ### Raw Results
 ```
