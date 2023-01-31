@@ -1,6 +1,14 @@
+:anger: **DISCLAIMER** :anger:
+
+Reading this README isn't for the faint of heart.
+
+The library isn't meant to replace the Array and the purpose isn't to use it in production. Although you could use it in projects, every part of your body will tell you not to. It feels dirty, it feels **grisly**, yet it now exists, it's there and works as expected.
+
+You will love to hate it.
+
 # Grizzly library
 
-The Grizzly library is an attempt to end the predominance of the Array in Ruby by providing a functional Monad for the Ruby Array. The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. 
+The Grizzly library is an attempt to end the predominance of the Array in Ruby by providing a collection that casts itself back while matching the whole Array interface. The work came after reading [Steve Klabnik's warning](https://steveklabnik.com/writing/beware-subclassing-ruby-core-classes) & [gist](https://gist.github.com/steveklabnik/6071687) about subclassing Ruby core classes. 
 
 We're testing the library against the [Ruby/Spec](https://github.com/ruby/spec) and covers most of the Array methods.
 
@@ -13,7 +21,7 @@ The library provides four classes/modules:
 
 You can find them in the lib folder.
 
-**The Grizzly::Collection is a subclass of Array that works; you will love to hate it.**
+**The Grizzly::Collection is a subclass of Array that works.**
 
 ## Usage
 
