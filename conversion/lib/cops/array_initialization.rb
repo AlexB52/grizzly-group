@@ -76,6 +76,8 @@ module RuboCop
               true
             when :false
               false
+            when :nil
+              nil
             else
               node.value
             end

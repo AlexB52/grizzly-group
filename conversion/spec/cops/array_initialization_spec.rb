@@ -10,6 +10,17 @@ module RuboCop
           cop_config['InitializeArrayWith'] = 'AnotherClass'
         end
 
+        it 'registers an offense for an array with nil @origin = [true, nil, false]' do
+          expect_offense(<<~RUBY)
+            @origin = [true, nil, false]
+                      ^^^^^^^^^^^^^^^^^^ an Array should not be initialized with the literal constructor []
+          RUBY
+
+          expect_correction(<<~RUBY)
+            @origin = AnotherClass.new([true, nil, false])
+          RUBY
+        end
+
         it 'registers an offense for @origin = [true, false]' do
           expect_offense(<<~RUBY)
             @origin = [true, false]
